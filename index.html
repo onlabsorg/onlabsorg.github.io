@@ -1,2 +1,38 @@
-<h1>OnLabs.org</h1>
-Work in progress ...
+<html>
+    <head>
+        <script src="/.olojs/node_modules/@onlabsorg/olojs/public/olo.js"></script>
+        <style>
+            html, body {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: block;
+                margin: 0 auto;
+                background-color: #FFFFFF;
+                line-height: 1.4;
+            }
+        </style>
+        <link rel="stylesheet" href="/.olojs/node_modules/@onlabsorg/olojs/public/olo-viewer.css"></link>
+    </head>
+    <body>
+
+        <olo-viewer :src="hash"></olo-viewer>
+
+        <script>
+
+            class Store extends olojs.HTTPStore {
+                async read (path) {
+                    return await super.read(`${path}.olo`);
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const rootElt = document.querySelector('olo-viewer');
+                const store = new Store(`${location.origin}/docs`);
+                olojs.createViewer(rootElt, store);
+            });
+        </script>
+    </body>
+</html>
