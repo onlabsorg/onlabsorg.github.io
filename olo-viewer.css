@@ -29,11 +29,6 @@
     src: local("Ubuntu Light Italic"), local("Ubuntu-LightItalic"), url("https://themes.googleusercontent.com/static/fonts/ubuntu/v4/DZ_YjBPqZ88vcZCcIXm6VqfTCPadK0KLfdEfFtGWCYw.woff") format("woff");
 }
 
-.olo-viewer {
-    display: block;
-    padding: 2em 20%;
-}
-
 .olo-viewer,
 .olo-viewer button,
 .olo-viewer input,
@@ -50,12 +45,12 @@
     line-height: 1.4;
 }
 
-@media screen and (max-width: 1024px) {
+.olo-viewer {
+    display: block;
+    padding: 2em 3%;
+}
 
-    .olo-viewer {
-        padding-left: 3%;
-        padding-right: 3%;
-    }
+@media screen and (min-width: 1024px) {
 
     .olo-viewer,
     .olo-viewer button,
@@ -63,6 +58,10 @@
     .olo-viewer select,
     .olo-viewer textarea {
         font-size: 18px;
+    }
+
+    .olo-viewer {
+        padding: 2em 20%;
     }
 }
 
