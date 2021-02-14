@@ -23,7 +23,7 @@
 
             class Store extends olojs.HTTPStore {
                 async read (path) {
-                    return await super.read(`${path}.olo`);
+                    return await super.read(`${path}.txt`);
                 }
             }
 
