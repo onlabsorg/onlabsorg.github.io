@@ -1,7 +1,7 @@
 const olojs = require('@onlabsorg/olojs');
 
 exports.routes = {
-    '/': new olojs.FileStore(`${__dirname}/..`, {extension:".txt"}),
+    '/': new olojs.FileStore(`${__dirname}/..`),
 };
 
 exports.commands = {

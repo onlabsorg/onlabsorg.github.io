@@ -23,7 +23,9 @@
 
             class Store extends olojs.HTTPStore {
                 async read (path) {
-                    return await super.read(`${path}.txt`);
+                    if (path === "") return await super.read(`/index.olo`);
+                    if (path.slice(-1) === "/") return await super.read(`${path}index.olo`);
+                    return await super.read(`${path}.olo`);
                 }
             }
 
