@@ -1,8 +1,0 @@
-{
-    "main": "config",
-    "version": "0.1.0",
-    "dependencies": {
-        "@onlabsorg/olojs": "^0.17.8",
-        "@onlabsorg/olowiki": "^0.8.2"
-    }
-}
