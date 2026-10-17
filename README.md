@@ -1,24 +1,18 @@
 # onlabsorg.github.io
 
-## Project setup
-```
-npm install
-```
+Landing page of <https://www.onlabs.org>: a static "work in progress" page.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+GitHub Pages serves the `docs/` folder as is; there is no build step.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- `docs/index.html`: the page.
+- `docs/assets/texl.css`, `landing.css`, `texl-highlight.js`: verbatim copies
+  from the Texl documentation (<https://www.onlabs.org/texl/assets/>), so the
+  two sites share one look. Refresh them from there when the Texl style
+  changes.
+- `docs/assets/onlabs.css`: additions specific to this page.
 
-### Lints and fixes files
-```
-npm run lint
-```
+The Texl documentation at <https://www.onlabs.org/texl/> is published from
+the [texl](https://github.com/onlabsorg/texl) repository, not from here.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To preview locally: `python3 -m http.server -d docs` (the `texl/` links only
+work on the live site).

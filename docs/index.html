@@ -1,1 +1,98 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>OnLabs.org</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"><link href="/css/chunk-vendors.83955e54.css" rel="preload" as="style"><link href="/css/index.73683168.css" rel="preload" as="style"><link href="/js/chunk-vendors.5264bd95.js" rel="preload" as="script"><link href="/js/index.3e3a7db8.js" rel="preload" as="script"><link href="/css/chunk-vendors.83955e54.css" rel="stylesheet"><link href="/css/index.73683168.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but OnLabs.org doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="/js/chunk-vendors.5264bd95.js"></script><script src="/js/index.3e3a7db8.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OnLabs.org</title>
+<meta name="description" content="OnLabs.org is building a new way to write, release and link documents. Work in progress.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/texl.css">
+<link rel="stylesheet" href="assets/landing.css">
+<link rel="stylesheet" href="assets/onlabs.css">
+</head>
+<body>
+
+<nav class="tx-nav" aria-label="Site">
+  <a class="tx-wordmark" href="./" title="OnLabs.org home">onlabs<span class="tx-delim">.org</span></a>
+  <span class="tx-links">
+    <a href="texl/">Texl</a>
+    <a href="https://github.com/onlabsorg">GitHub</a>
+  </span>
+</nav>
+
+<main class="tx-page">
+
+  <section class="tx-hero">
+    <div>
+      <span class="ol-status"><span class="ol-pulse" aria-hidden="true"></span>Work in progress</span>
+      <h1>Something new is being written.</h1>
+      <p>Your reports, calculations and spreadsheets are about to stop being
+      dead files. We are not ready to show it yet, but the first piece is
+      already out.</p>
+      <div class="tx-actions">
+        <a class="tx-button primary" href="texl/">Meet Texl</a>
+        <a class="tx-button secondary" href="https://github.com/onlabsorg">Follow on GitHub</a>
+      </div>
+    </div>
+    <div class="tx-demo">
+      <figure>
+        <figcaption>Template</figcaption>
+<pre><code class="language-texl">&lt;% texl.import("https://onlabs.org/next")
+   ~&gt; (doc -&gt; doc.rendering ; "Not released yet.") %&gt;</code></pre>
+      </figure>
+      <figure>
+        <figcaption>Output</figcaption>
+<pre class="tx-output"><code>Not released yet.<span class="ol-caret" aria-hidden="true"></span></code></pre>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Three words, for now</h2>
+    <p class="tx-lead">The rest will follow, when it is ready.</p>
+    <div class="tx-grid">
+      <div class="tx-card">
+        <h3><span class="ol-step">1</span>Write</h3>
+        <p>Words and numbers, in one living document.</p>
+      </div>
+      <div class="tx-card">
+        <h3><span class="ol-step">2</span>Release</h3>
+        <p>When it is ready, it is out. Every version, on record.</p>
+      </div>
+      <div class="tx-card">
+        <h3><span class="ol-step">3</span>Link</h3>
+        <p>Use what others release. Never re-type it again.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tx-split">
+    <div>
+      <h2>The first piece is out</h2>
+      <p class="tx-lead">Texl is the document format underneath it all: text
+      that computes its own content and imports other documents by URL. It is
+      free, open source and ready to use today.</p>
+      <div class="tx-actions">
+        <a class="tx-button primary" href="texl/">Explore Texl</a>
+        <a class="tx-button secondary" href="https://github.com/onlabsorg/texl">Source code</a>
+      </div>
+    </div>
+    <a class="tx-card ol-texl" href="texl/">
+      <span class="tx-wordmark ol-texl-mark"><span class="tx-delim">&lt;%</span>texl<span class="tx-delim">%&gt;</span></span>
+      <p>Text templates with a small, forgiving language.</p>
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="tx-page">
+    &copy; 2026 OnLabs.org &middot; Work in progress
+    &middot; <a href="texl/">Texl</a>
+    &middot; <a href="https://github.com/onlabsorg">GitHub</a>
+  </div>
+</footer>
+
+<script src="assets/texl-highlight.js"></script>
+</body>
+</html>

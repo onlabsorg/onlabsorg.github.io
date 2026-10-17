@@ -1,0 +1,85 @@
+/*
+ * Additions for the OnLabs.org landing page.
+ *
+ * texl.css and landing.css are verbatim copies from the Texl documentation
+ * (https://www.onlabs.org/texl/assets/), so both sites share one look.
+ * Refresh them from there when the Texl style changes; put anything specific
+ * to this page here.
+ */
+
+/* "Work in progress" badge with a pulsing dot */
+
+.ol-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: var(--tx-accent-soft);
+    color: var(--tx-accent);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ol-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tx-tag);
+    animation: ol-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ol-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+/* Blinking caret at the end of the output: still rendering */
+
+.ol-caret {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.15em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: var(--tx-tag);
+    animation: ol-blink 1.1s steps(1) infinite;
+}
+
+@keyframes ol-blink {
+    50% { opacity: 0; }
+}
+
+/* Step numbers on the three cards */
+
+.ol-step {
+    margin-right: 10px;
+    color: var(--tx-tag);
+    font-family: var(--tx-font-mono);
+}
+
+/* Texl teaser card */
+
+.ol-texl {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-height: 200px;
+    text-align: center;
+}
+
+.ol-texl-mark {
+    font-size: 40px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ol-pulse,
+    .ol-caret {
+        animation: none;
+    }
+}
