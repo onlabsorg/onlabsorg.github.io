@@ -1,9 +1,8 @@
 /*
  * Additions for the OnLabs.org landing page.
  *
- * The shared look is in v1/ (theme.css, landing.css, ...), the master copy
- * that the Texl and Stilo docs load too; see STYLE.md. Put only what is
- * specific to this page here, with the tokens of theme.css.
+ * Colors and fonts come from theme.css, the layout from landing.css. Put
+ * only what is specific to this page here, with the tokens of theme.css.
  */
 
 /* "Work in progress" badge with a pulsing dot */

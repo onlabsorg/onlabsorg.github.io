@@ -1,19 +1,12 @@
 /*
- * OnLabs.org documentation: shared design tokens and components.
+ * OnLabs.org: design tokens and shared components.
  *
- * The master copy of the look shared by www.onlabs.org, the Texl docs
- * (/texl/) and the Stilo docs (/stilo/). Every page of every site loads it
- * from https://www.onlabs.org/assets/v1/, followed by its site's accent file
- * (accent-onlabs.css, accent-texl.css, accent-stilo.css). `book.css` maps
- * these tokens onto mdBook; Texl's `rustdoc.css` onto rustdoc. See STYLE.md
- * in the onlabsorg.github.io repository.
+ * Every page of www.onlabs.org loads this file: the landing page and the
+ * manual (mdBook, through book.css). See STYLE.md.
  *
  * Tokens come in a light (`--tx-l-*`) and a dark (`--tx-d-*`) palette. The
  * semantic tokens (`--tx-bg`, `--tx-fg`, ...) pick one of them: the system
- * preference by default, or the theme chosen in mdBook or rustdoc.
- *
- * Do not make breaking changes in v1/: every site follows them at once.
- * Copy the folder to v2/ instead, and move the sites over one by one.
+ * preference by default, or the theme chosen in mdBook.
  */
 
 :root {
@@ -28,8 +21,7 @@
     --tx-nav-height: 52px;
     --tx-content-width: 46rem;
 
-    /* Light palette. The accent (Texl teal here) is set per site by its
-       accent file; the code colors are the same on every site. */
+    /* Light palette */
     --tx-l-bg: #fbfaf7;
     --tx-l-bg-raised: #ffffff;
     --tx-l-fg: #1f2430;
@@ -107,8 +99,8 @@
 }
 
 /* ---------------------------------------------------------------------------
- *  Site navigation bar, shared by the landing page and the API reference.
- *  The manual adds the same links to mdBook's menu bar (see book.js).
+ *  Site navigation bar of the landing page. The manual adds the same links
+ *  to mdBook's menu bar (see book.js).
  * ------------------------------------------------------------------------- */
 
 .tx-nav {
@@ -142,8 +134,7 @@
     white-space: nowrap;
 }
 
-/* The wordmark: the site's name, with delimiters in the site's accent
-   ("<%texl%>", "¶stilo", "onlabs.org"). */
+/* The wordmark: "onlabs.org", with the delimiters in the tag color. */
 .tx-wordmark {
     font-family: var(--tx-font-mono);
     font-weight: 700;
@@ -154,7 +145,7 @@
 }
 
 .tx-wordmark .tx-delim {
-    color: var(--tx-accent);
+    color: var(--tx-tag);
     font-weight: 600;
 }
 

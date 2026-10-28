@@ -1,124 +1,121 @@
-# OnLabs.org documentation style guide
+# OnLabs.org manual style guide
 
-This is the master style guide of the three OnLabs.org documentation sites
-(decision D20 of the OnLabs.org coordination folder):
+This guide keeps the OnLabs.org site consistent: the landing page
+(`site/index.html`) and the manual (`manual/`), published at
+<https://www.onlabs.org> (decision D21 of the OnLabs.org coordination
+folder).
 
-| Site       | URL                              | Source                                        | Accent |
-|------------|----------------------------------|-----------------------------------------------|--------|
-| OnLabs.org | <https://www.onlabs.org/>        | this repository, `docs/`                      | slate  |
-| Texl       | <https://www.onlabs.org/texl/>   | <https://github.com/onlabsorg/texl>, `docs/`  | teal   |
-| Stilo      | <https://www.onlabs.org/stilo/>  | <https://github.com/onlabsorg/stilo>, `docs/` | blue   |
+## Who it is for
 
-It covers what the three have in common. Each subproject keeps a short
-`docs/STYLE.md` with what is its own (terms, where things live, API
-conventions of its languages) and links here. Where the two disagree, this
-guide wins; fix the local one.
+The manual is for **users**: engineers, finance people and other knowledge
+workers who write documents, not programmers. It covers Stilo, Texl and
+Swan from the user's side: how to install and use the editor, how to write
+formulas, the language, the built-in functions.
 
-## Roles of the sites
+It does not cover how the software is built or how to program against it
+(APIs, architecture, protocol, embedding, internals). That is in the
+developer documentation in each repository's `docs/` folder on GitHub,
+which the manual reaches only through the GitHub link in the menu bar and
+an occasional "programmers: see the repository" sentence.
 
-- **OnLabs.org is the hub.** It says what OnLabs.org is and links to every
-  product's documentation. It does not document a product itself.
-- **Each product documents only itself.** One topic has one home:
-  - Texl syntax, the Swan language, its built-ins and the Texl libraries:
-    the Texl docs.
-  - The `stilo` command, the web editor, the document format as Stilo
-    stores it, the protocol, the editor component: the Stilo docs.
-- **Link, do not repeat.** When a page needs a topic that lives on another
-  site, it gives at most one short example and links to the page there
-  (a deep link, not the site's home). Stilo's pages never explain Texl or
-  Swan syntax beyond such an example.
-- Link to the other sites by absolute URL (`https://www.onlabs.org/texl/...`).
+## Where things live
+
+| What                       | Where                                         |
+|----------------------------|-----------------------------------------------|
+| Landing page               | `site/index.html`, plus `assets/onlabs.css`   |
+| Manual                     | `manual/src` (mdBook; `manual/book.toml`)     |
+| Look: tokens, components   | `assets/theme.css`                            |
+| Landing page layout        | `assets/landing.css`                          |
+| Tokens mapped onto mdBook  | `assets/book.css`                             |
+| Menu bar of the manual     | `assets/book.js`                              |
+| Highlighting of `swan` and `texl` code | `assets/highlight.js`             |
+| Build                      | `build.sh` into `target/site`; `.github/workflows/pages.yml` publishes it |
+| Last subproject commits the manual reflects | `SYNC.md`                    |
+
+Parts of the manual and their sources of truth:
+
+| Part                        | Folder                        | Follows       |
+|-----------------------------|-------------------------------|---------------|
+| Getting started, Using Stilo | `getting-started.md`, `editor/`, `cli/`, `file-format.md` | stilo |
+| Writing documents with Texl | `templates/`                  | texl          |
+| The Swan language           | `swan/`                       | texl          |
+| Reference                   | `swan/builtins/`              | texl          |
 
 ## Look and feel
 
-The shared look lives in this repository and is served from
-`https://www.onlabs.org/assets/v1/`. Every page of every site loads it from
-there; no site keeps copies.
-
-| File                | What                                                     |
-|---------------------|----------------------------------------------------------|
-| `theme.css`         | Design tokens (colors, fonts, sizes, code colors, light and dark), navigation bar, wordmark, code highlighting |
-| `accent-onlabs.css`, `accent-texl.css`, `accent-stilo.css` | The site's accent, light and dark; load right after `theme.css` |
-| `landing.css`       | Layout of the landing pages                              |
-| `book.css`          | Maps the tokens onto mdBook                              |
-| `highlight.js`      | Highlights `swan` and `texl` code blocks                 |
-| `nav.js`            | The list of sites; fills `[data-ol-sites]` with links to all three |
-
-Rules:
-
-- **Only the accent differs between sites.** Links, buttons, borders on
-  hover, highlights and the wordmark's delimiters take the site's accent.
-  Code colors are the same everywhere, so code reads the same on every site.
-- Do not add colors or fonts in a page or a site's own CSS; use the tokens
-  of `theme.css`. A site's own CSS (`onlabs.css`, `stilo.css`, ...) holds
-  only components that site needs.
-- The wordmark is the site's name in the monospace font, with delimiters in
-  the accent: `onlabs.org`, `<%texl%>`, `¶stilo`.
-- The favicon is the site's glyph on a rounded square in the site's light
-  accent: slate `#3a4a63`, teal `#0b6b6b`, blue `#1f5fa8`.
-- Each site's navigation shows the links to the three sites (from
-  `nav.js`) next to its own sections.
-- **Changing the shared files:** change them here. A change in `v1/` goes
-  live on all three sites at once, so it must not break any of them; check
-  the three before pushing. A breaking change goes into a new `v2/` folder,
-  and the sites move over one by one.
-- The mdBook manuals load the shared files by absolute URL from
-  `docs/theme/head.hbs`, which mdBook adds to every page's `<head>`
-  (`additional-css` and `additional-js` in `book.toml` take local files
-  only; keep them for the site's own files). Scripts there need `defer`.
-  The landing pages link the same URLs. A local preview needs a network
-  connection.
+- One look for the whole site: the Texl theme, teal accent, template tags
+  and the wordmark delimiters (`.org`) in orange. No part has a color of
+  its own.
+- All pages use the design tokens of `assets/theme.css`, in a light and a
+  dark variant. Do not add colors or fonts in a page; add a token instead.
+- The menu bar shows the `onlabs.org` wordmark (to the landing page), the
+  parts of the manual, and the GitHub link at the far right.
 
 ## Narrative style
 
-- Write for the reader of that page. User chapters speak to engineers and
-  Word or Excel users, not to programmers: no jargon, no code they do not
-  need. Developer and API chapters speak to programmers.
+- Write for a user who has never programmed. No jargon; explain a term the
+  first time it appears, or avoid it. "Host", "engine", "global" appear only
+  where unavoidable, with a short explanation.
 - Address the reader as "you". Use the present tense and the active voice.
 - Prefer short sentences and short paragraphs. One idea per paragraph.
-- Show an example first, then explain it.
+- Show an example first, then explain it. Prefer examples from engineering
+  and business documents (a beam check, an invoice) over abstract ones.
 - Describe what the software does today. Describe planned features only as
-  "coming soon", and never in an API reference.
+  "coming soon".
 - When the behavior is surprising, say so plainly and show the fix.
 - Use American spelling. Wrap Markdown lines at about 80 characters.
-- Write "OnLabs.org", "Texl", "Swan" and "Stilo" capitalized in prose, and
-  commands (`texl`, `stilo`) in code font.
+
+## Terms
+
+| Use                | For                                                              |
+|--------------------|------------------------------------------------------------------|
+| document           | one `.texl` file                                                 |
+| folder             | the folder that `stilo serve` serves; its documents             |
+| the web editor     | Stilo's user interface in the browser                            |
+| line               | a cell, as the user sees it, by its number                       |
+| formula            | a `<% %>` tag, in the Stilo part                                 |
+| tag                | a `<% %>` tag, in the Texl and Swan parts ("formula" is introduced there as the same thing) |
+| template           | text with tags, in the Texl part                                 |
+| name               | a Swan identifier (not "variable", except in passing)            |
+| `Nothing`, `Undefined`, `Numb`, `Text`, ... | Swan types, always in code font         |
+
+Write "Stilo", "Texl" and "Swan" capitalized in prose, `stilo` in code font
+for the command, `TRUE` and `FALSE` in code font. Write keys as
+`Ctrl+Enter`, with Mac keys mentioned once per page ("⌘ instead of Ctrl").
 
 ## Code examples
 
-- Template code goes in ```` ```texl ```` blocks, Swan code in
+- Documents and templates go in ```` ```texl ```` blocks, Swan code in
   ```` ```swan ```` blocks, shell commands in ```` ```sh ```` blocks, and
   output in ```` ```text ```` blocks.
 - A ```` ```texl ```` block followed by a ```` ```text ```` block shows a
-  template and its exact rendering.
+  document and its exact rendering.
+- In a Swan block, a line can end with `# => result`, the value of that
+  line, optionally followed by a short explanation after a comma. Results
+  use Swan notation: `42`, `"text"`, `TRUE`, `(1, 2)`, `[1, 2]`,
+  `{a: 1, b: 2}`.
 - Keep examples small and runnable. Every result and every rendering must
-  be the real output of the current implementation.
+  be the real output of the current Texl and Stilo; check them with
+  `stilo render` before publishing.
+- Render examples with Stilo (the editor or `stilo render`), never with a
+  programming library.
 
-## API references
+## Reference entries
 
-Every API entry, in every language, has the same shape: a heading with the
-name in code font, a signature block, a one-sentence summary that starts
-with a verb in the third person ("Returns ...", "Creates ..."), details
-(arguments, return value, special cases, errors), and an example.
-Signatures use the language's own notation. Each subproject's `STYLE.md`
-gives the details for its languages.
+Every built-in function has the same shape: a heading with the name in code
+font, a signature (`text.find needle haystack -> Numb`), a one-sentence
+summary that starts with a verb in the third person ("Returns ..."),
+details, and an example.
 
-## Keeping the sites in sync
+## Keeping the manual current
 
-- **Assets:** one copy, here (see above).
-- **Links between sites:** `.github/workflows/links.yml` in this repository
-  checks every link on the three live sites each week, and on every push
-  here. A broken deep link (for instance after the Texl manual moved a page)
-  shows up as a failed run; fix it in the site that links.
-- **Writing:** the Texl and Stilo repositories each have a `write-docs`
-  skill (`.claude/skills/write-docs/`) that a Claude session uses whenever
-  it writes or changes documentation. It must:
-  1. Read this guide (`../onlabsorg.github.io/STYLE.md` when the
-     repositories sit side by side, else
-     <https://github.com/onlabsorg/onlabsorg.github.io/blob/master/STYLE.md>)
-     and the local `docs/STYLE.md`.
-  2. Keep the page to its own site's topics, and link to the other sites
-     for theirs (see "Roles of the sites").
-  3. Use the tokens only, and never copy the shared assets into the
-     repository.
-  4. Build the docs and check the links before finishing.
+The texl and stilo repositories know nothing about this site. The manual
+follows them from a session in the OnLabs.org coordination folder, which
+reads (never writes) `texl/` and `stilo/`, with the `/update-manual` skill:
+
+1. `SYNC.md` records the last commit of each repository that the manual
+   reflects.
+2. The skill lists the commits since then, reads their messages, the
+   changed user-facing behavior and the developer docs, and updates the
+   manual parts that follow that repository.
+3. It checks the examples, builds the site, and updates `SYNC.md`.

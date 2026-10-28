@@ -1,0 +1,22 @@
+[book]
+title = "OnLabs.org manual"
+description = "Write living documents with Stilo, Texl and Swan"
+authors = ["Marcello Del Buono"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../target/manual"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "coal"
+git-repository-url = "https://github.com/onlabsorg"
+git-repository-icon = "fa-github"
+site-url = "/manual/"
+additional-css = ["../assets/theme.css", "../assets/book.css"]
+additional-js = ["../assets/highlight.js", "../assets/book.js"]
+
+[output.html.search]
+limit-results = 20
