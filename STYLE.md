@@ -62,9 +62,12 @@ Rules:
   live on all three sites at once, so it must not break any of them; check
   the three before pushing. A breaking change goes into a new `v2/` folder,
   and the sites move over one by one.
-- The mdBook manuals load the files in `book.toml` by absolute URL, e.g.
-  `additional-css = ["https://www.onlabs.org/assets/v1/theme.css", ...]`.
-  A local preview needs a network connection.
+- The mdBook manuals load the shared files by absolute URL from
+  `docs/theme/head.hbs`, which mdBook adds to every page's `<head>`
+  (`additional-css` and `additional-js` in `book.toml` take local files
+  only; keep them for the site's own files). Scripts there need `defer`.
+  The landing pages link the same URLs. A local preview needs a network
+  connection.
 
 ## Narrative style
 
