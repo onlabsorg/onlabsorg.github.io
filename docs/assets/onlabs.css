@@ -1,10 +1,9 @@
 /*
  * Additions for the OnLabs.org landing page.
  *
- * texl.css and landing.css are verbatim copies from the Texl documentation
- * (https://www.onlabs.org/texl/assets/), so both sites share one look.
- * Refresh them from there when the Texl style changes; put anything specific
- * to this page here.
+ * The shared look is in v1/ (theme.css, landing.css, ...), the master copy
+ * that the Texl and Stilo docs load too; see STYLE.md. Put only what is
+ * specific to this page here, with the tokens of theme.css.
  */
 
 /* "Work in progress" badge with a pulsing dot */
@@ -61,20 +60,23 @@
     font-family: var(--tx-font-mono);
 }
 
-/* Texl teaser card */
+/* Product cards: Stilo and Texl */
 
-.ol-texl {
+.ol-products {
+    display: grid;
+    gap: 20px;
+}
+
+.ol-product {
     display: flex !important;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 12px;
-    min-height: 200px;
+    gap: 10px;
     text-align: center;
 }
 
-.ol-texl-mark {
-    font-size: 40px;
+.ol-product-mark {
+    font-size: 32px;
 }
 
 @media (prefers-reduced-motion: reduce) {

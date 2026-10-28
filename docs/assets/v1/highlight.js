@@ -2,7 +2,7 @@
  * Syntax highlighting for Swan (```swan) and Texl (```texl) code blocks.
  *
  * It wraps tokens in the same `hljs-*` classes that highlight.js uses, so the
- * colors come from texl.css. It runs on its own: the landing page loads it
+ * colors come from theme.css. It runs on its own: the landing page loads it
  * without highlight.js, and in the manual it handles the two languages that
  * highlight.js does not know.
  */

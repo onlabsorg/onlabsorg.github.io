@@ -1,13 +1,19 @@
 /*
- * Texl documentation: shared design tokens and components.
+ * OnLabs.org documentation: shared design tokens and components.
  *
- * Every page of the site loads this file: the landing page, the manual
- * (mdBook) and the API reference (rustdoc). `book.css` and `rustdoc.css` map
- * these tokens onto the variables of mdBook and rustdoc.
+ * The master copy of the look shared by www.onlabs.org, the Texl docs
+ * (/texl/) and the Stilo docs (/stilo/). Every page of every site loads it
+ * from https://www.onlabs.org/assets/v1/, followed by its site's accent file
+ * (accent-onlabs.css, accent-texl.css, accent-stilo.css). `book.css` maps
+ * these tokens onto mdBook; Texl's `rustdoc.css` onto rustdoc. See STYLE.md
+ * in the onlabsorg.github.io repository.
  *
  * Tokens come in a light (`--tx-l-*`) and a dark (`--tx-d-*`) palette. The
  * semantic tokens (`--tx-bg`, `--tx-fg`, ...) pick one of them: the system
  * preference by default, or the theme chosen in mdBook or rustdoc.
+ *
+ * Do not make breaking changes in v1/: every site follows them at once.
+ * Copy the folder to v2/ instead, and move the sites over one by one.
  */
 
 :root {
@@ -22,7 +28,8 @@
     --tx-nav-height: 52px;
     --tx-content-width: 46rem;
 
-    /* Light palette */
+    /* Light palette. The accent (Texl teal here) is set per site by its
+       accent file; the code colors are the same on every site. */
     --tx-l-bg: #fbfaf7;
     --tx-l-bg-raised: #ffffff;
     --tx-l-fg: #1f2430;
@@ -135,7 +142,8 @@
     white-space: nowrap;
 }
 
-/* The wordmark: "texl" between template delimiters. */
+/* The wordmark: the site's name, with delimiters in the site's accent
+   ("<%texl%>", "¶stilo", "onlabs.org"). */
 .tx-wordmark {
     font-family: var(--tx-font-mono);
     font-weight: 700;
@@ -146,7 +154,7 @@
 }
 
 .tx-wordmark .tx-delim {
-    color: var(--tx-tag);
+    color: var(--tx-accent);
     font-weight: 600;
 }
 

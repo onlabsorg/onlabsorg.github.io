@@ -1,0 +1,13 @@
+/*
+ * Accent of the Texl documentation (www.onlabs.org/texl/): teal.
+ * Load after theme.css. Only the accent changes per site (D20).
+ */
+
+:root {
+    --tx-l-accent: #0b6b6b;
+    --tx-l-accent-hover: #084f4f;
+    --tx-l-accent-soft: #dcefec;
+    --tx-d-accent: #55c7bf;
+    --tx-d-accent-hover: #86dcd5;
+    --tx-d-accent-soft: #163634;
+}

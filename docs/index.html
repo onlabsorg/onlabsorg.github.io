@@ -6,17 +6,19 @@
 <title>OnLabs.org</title>
 <meta name="description" content="OnLabs.org is building a new way to write, release and link documents. Work in progress.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/texl.css">
-<link rel="stylesheet" href="assets/landing.css">
+<link rel="stylesheet" href="assets/v1/theme.css">
+<link rel="stylesheet" href="assets/v1/accent-onlabs.css">
+<link rel="stylesheet" href="assets/v1/landing.css">
 <link rel="stylesheet" href="assets/onlabs.css">
 </head>
 <body>
 
 <nav class="tx-nav" aria-label="Site">
   <a class="tx-wordmark" href="./" title="OnLabs.org home">onlabs<span class="tx-delim">.org</span></a>
-  <span class="tx-links">
+  <span class="tx-links" data-ol-sites="onlabs">
+    <a href="./" aria-current="page">OnLabs.org</a>
     <a href="texl/">Texl</a>
-    <a href="https://github.com/onlabsorg">GitHub</a>
+    <a href="stilo/">Stilo</a>
   </span>
 </nav>
 
@@ -27,11 +29,11 @@
       <span class="ol-status"><span class="ol-pulse" aria-hidden="true"></span>Work in progress</span>
       <h1>Something new is being written.</h1>
       <p>Your reports, calculations and spreadsheets are about to stop being
-      dead files. We are not ready to show it yet, but the first piece is
-      already out.</p>
+      dead files. We are not ready to show it all yet, but the first two
+      pieces are already out.</p>
       <div class="tx-actions">
-        <a class="tx-button primary" href="texl/">Meet Texl</a>
-        <a class="tx-button secondary" href="https://github.com/onlabsorg">Follow on GitHub</a>
+        <a class="tx-button primary" href="stilo/">Try Stilo</a>
+        <a class="tx-button secondary" href="texl/">Meet Texl</a>
       </div>
     </div>
     <div class="tx-demo">
@@ -68,19 +70,25 @@
 
   <section class="tx-split">
     <div>
-      <h2>The first piece is out</h2>
+      <h2>The first pieces are out</h2>
       <p class="tx-lead">Texl is the document format underneath it all: text
-      that computes its own content and imports other documents by URL. It is
-      free, open source and ready to use today.</p>
+      that computes its own content and imports other documents by URL. Stilo
+      is the editor for Texl documents, as familiar as a word processor. Both
+      are free, open source and ready to use today.</p>
       <div class="tx-actions">
-        <a class="tx-button primary" href="texl/">Explore Texl</a>
-        <a class="tx-button secondary" href="https://github.com/onlabsorg/texl">Source code</a>
+        <a class="tx-button secondary" href="https://github.com/onlabsorg">Follow on GitHub</a>
       </div>
     </div>
-    <a class="tx-card ol-texl" href="texl/">
-      <span class="tx-wordmark ol-texl-mark"><span class="tx-delim">&lt;%</span>texl<span class="tx-delim">%&gt;</span></span>
-      <p>Text templates with a small, forgiving language.</p>
-    </a>
+    <div class="ol-products">
+      <a class="tx-card ol-product" href="stilo/">
+        <span class="tx-wordmark ol-product-mark"><span class="tx-delim">&para;</span>stilo</span>
+        <p>The editor: write, compute and link documents in your browser.</p>
+      </a>
+      <a class="tx-card ol-product" href="texl/">
+        <span class="tx-wordmark ol-product-mark"><span class="tx-delim">&lt;%</span>texl<span class="tx-delim">%&gt;</span></span>
+        <p>The format: text templates with a small, forgiving language.</p>
+      </a>
+    </div>
   </section>
 
 </main>
@@ -89,10 +97,12 @@
   <div class="tx-page">
     &copy; 2026 OnLabs.org &middot; Work in progress
     &middot; <a href="texl/">Texl</a>
+    &middot; <a href="stilo/">Stilo</a>
     &middot; <a href="https://github.com/onlabsorg">GitHub</a>
   </div>
 </footer>
 
-<script src="assets/texl-highlight.js"></script>
+<script src="assets/v1/highlight.js"></script>
+<script src="assets/v1/nav.js"></script>
 </body>
 </html>
