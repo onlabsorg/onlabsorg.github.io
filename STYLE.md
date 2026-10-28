@@ -32,7 +32,7 @@ guide wins; fix the local one.
 ## Look and feel
 
 The shared look lives in this repository and is served from
-<https://www.onlabs.org/assets/v1/>. Every page of every site loads it from
+`https://www.onlabs.org/assets/v1/`. Every page of every site loads it from
 there; no site keeps copies.
 
 | File                | What                                                     |
