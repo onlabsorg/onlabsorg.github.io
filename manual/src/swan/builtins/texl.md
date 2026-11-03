@@ -12,12 +12,23 @@ texl.import uri -> Promise
 Loads the document at `uri`, renders it, and returns a promise of a namespace
 that describes it:
 
-| Member      | Type        | Content                                               |
-|-------------|-------------|-------------------------------------------------------|
-| `uri`       | `Text`      | The full URI of the document                          |
-| `source`    | `Text`      | The template source                                   |
-| `data`      | `Namespace` | The names the document's tags bound                   |
-| `rendering` | `Text`      | The rendered text                                     |
+| Member   | Type        | Content                                               |
+|----------|-------------|-------------------------------------------------------|
+| `uri`    | `Text`      | The full URI of the document                          |
+| `source` | `Text`      | The template source                                   |
+| `data`   | `Namespace` | The names the document's tags bound                   |
+| `text`   | `Text`      | The rendered text                                     |
+| `tags`   | `List`      | One namespace per tag, in the order of the source     |
+
+Each item of `tags` describes one tag, also a tag that writes nothing:
+
+| Member      | Content                                                    |
+|-------------|------------------------------------------------------------|
+| `start`     | where the tag starts in `source`, in bytes                 |
+| `end`       | where it ends in `source`, just after `%>`                 |
+| `out_start` | where its output starts in `text`, in bytes                |
+| `out_end`   | where its output ends in `text`                            |
+| `value`     | the value that the tag wrote                               |
 
 If the document cannot be loaded, the promise resolves to `Nothing`. If the
 import would close a cycle (a document importing itself, directly or through
@@ -33,7 +44,7 @@ relative path, returns the same promise.
 program to keep names across renders, `texl` has no `import`.
 
 ```texl,nocheck
-<% texl.import("partials/header.texl") ~> (doc -> doc.rendering) %>
+<% texl.import("partials/header.texl") ~> (doc -> doc.text) %>
 ```
 
 See [Documents and imports](../../templates/documents.md) for the details.

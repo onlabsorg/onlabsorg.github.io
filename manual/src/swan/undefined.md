@@ -17,7 +17,7 @@ In a template, an undefined value renders as `[[Undefined]]`.
 - Applying a value that cannot be applied: `5 3`.
 - Built-in functions given the wrong arguments: `text.size 42`.
 - Math results that are not numbers: `math.sqrt (-1)`.
-- Syntax errors: `(1 + 2`, `1 + * 2`.
+- Syntax errors: `(1 + 2`, `1 + * 2`, `2 + 3 ) 1`.
 - Binding something that is not a name: `1 = 2`.
 - Binding a name inside a namespace: `math.(pi = 3)`.
 - `undef.from`, which creates one on purpose.
@@ -62,21 +62,28 @@ err.lhv              # => "hello"
 err.rhv              # => 1
 ```
 
+`description` gives the error in plain words, here: cannot subtract the number
+`1` from the text `"hello"`. The other members depend on `type`:
+
 | `type`            | Cause                                   | Other members                  |
 |-------------------|-----------------------------------------|--------------------------------|
 | `UnaryOperation`  | a prefix operator or a built-in function | `op`, `val`, `pos`            |
 | `BinaryOperation` | a binary operator or an application     | `op`, `lhv`, `rhv`, `pos`      |
-| `Termination`     | a missing closing bracket               | `expected`, `pos`              |
+| `Termination`     | the expression ended before its bracket was closed | `expected`, `pos`   |
 | `Token`           | a character or token in the wrong place | `token`, `pos`                 |
 | `Name`            | a name was expected                     | `pos`                          |
 | `Value`           | created with `undef.from`               | `val`                          |
 
 `op` names the operation, such as `"sum"`, `"application"` or `"text.size"`.
-`pos` is the position in the expression where the error happened, counted in
-bytes from the start of the expression (in a template, from the start of the
-tag's content). Built-in functions report position 0. When an operand is itself
-undefined, `undef.inspect` describes it too, so you can follow the chain back
-to the original error.
+`pos` is the position of the error, counted in bytes from the start of the
+document, and `uri` is the document it is in. An error inside a function
+imported from another document points into that document. An error made by a
+built-in function points to its call. In code run with `parse`, `pos` counts
+from the start of that code, and there is no `uri`. A value made with
+`undef.from` has no position.
+
+When an operand is itself undefined, `undef.inspect` describes it too, so you
+can follow the chain back to the original error.
 
 ## Creating undefined values
 

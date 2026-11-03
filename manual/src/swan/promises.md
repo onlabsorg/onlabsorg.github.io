@@ -10,8 +10,9 @@ also create them yourself with the [`promise`](builtins/promise.md) namespace.
 Swan promises are simple:
 
 - A promise resolves at most once. Later attempts are ignored.
-- A promise never fails. If it resolves to an `Undefined` value, it holds
-  `Nothing` instead.
+- A promise never fails. An `Undefined` value is not a failure: a promise
+  holds it like any other value, and the function you give to `~>` receives
+  it.
 
 ## Using a value that arrives later
 
@@ -69,7 +70,7 @@ resolves and writes its value. This is how a template uses an imported
 document:
 
 ```texl,nocheck
-<% texl.import("header.texl") ~> (doc -> doc.rendering) %>
+<% texl.import("header.texl") ~> (doc -> doc.text) %>
 ```
 
 The next tags run only after the promise resolves, so they can use what the

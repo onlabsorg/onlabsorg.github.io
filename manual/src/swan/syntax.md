@@ -108,4 +108,13 @@ error is, and the rest of the expression is evaluated as usual.
 1 + * 2              # => Undefined
 ```
 
+A token that cannot belong to the expression is different: a stray `)`, `]` or
+`}`, or an unknown character such as `@`. It makes the whole expression
+`Undefined`, and none of it runs, not even its assignments.
+
+```swan
+2 + 1e3 ) 1          # => Undefined
+(1 @ 2)              # => Undefined
+```
+
 See [Undefined values](undefined.md) to find out what went wrong.

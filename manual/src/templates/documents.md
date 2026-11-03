@@ -7,14 +7,15 @@ URL. A document can import other documents, to reuse pieces of text (*partials*)
 ## Importing a document
 
 `texl.import(uri)` loads the document at `uri`, renders it, and returns a
-promise of a namespace with four members:
+promise of a namespace with five members:
 
-| Member      | Content                                                    |
-|-------------|------------------------------------------------------------|
-| `uri`       | the full location of the document                          |
-| `source`    | its template text                                          |
-| `data`      | a namespace with the names its tags bound                  |
-| `rendering` | its rendered text                                          |
+| Member   | Content                                                    |
+|----------|------------------------------------------------------------|
+| `uri`    | the full location of the document                          |
+| `source` | its template text                                          |
+| `data`   | a namespace with the names its tags bound                  |
+| `text`   | its rendered text                                          |
+| `tags`   | a list that describes each of its tags, in order           |
 
 Because the result is a [promise](../swan/promises.md), you use it with `~>`:
 `texl.import(uri) ~> (doc -> ...)` applies the function to the document once
@@ -32,7 +33,7 @@ This template inserts it:
 
 ```texl
 Thank you for your order.
-<% texl.import("partials/footer.texl") ~> (doc -> doc.rendering) %>
+<% texl.import("partials/footer.texl") ~> (doc -> doc.text) %>
 ```
 
 ```text
@@ -46,7 +47,7 @@ by the line break after the tag. Use `text.trim_tail` to drop the first one:
 
 ```texl
 Thank you for your order.
-<% texl.import("partials/footer.texl") ~> (doc -> text.trim_tail doc.rendering) %>
+<% texl.import("partials/footer.texl") ~> (doc -> text.trim_tail doc.text) %>
 ```
 
 ```text
@@ -67,7 +68,7 @@ renders the same whoever imports it. With `partials/header.texl` containing:
 the title of the importer does not reach it:
 
 ```texl
-<% title = "Monthly report" %><% texl.import("partials/header.texl") ~> (doc -> text.trim_tail doc.rendering) %>
+<% title = "Monthly report" %><% texl.import("partials/header.texl") ~> (doc -> text.trim_tail doc.text) %>
 ```
 
 ```text
@@ -147,7 +148,7 @@ If a document cannot be loaded, the promise resolves to `Nothing`. Give a
 fallback with `;`:
 
 ```texl
-<% texl.import("missing.texl") ~> (doc -> doc.rendering ; "(not found)") %>
+<% texl.import("missing.texl") ~> (doc -> doc.text ; "(not found)") %>
 ```
 
 ```text

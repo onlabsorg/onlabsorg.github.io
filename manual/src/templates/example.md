@@ -35,7 +35,7 @@ items = [
 nl = "
 "
 %><% texl.import("lib/money.texl") ~> (lib -> bind "money" lib.data)
-%><% texl.import("partials/letterhead.texl") ~> (doc -> doc.rendering) %>
+%><% texl.import("partials/letterhead.texl") ~> (doc -> doc.text) %>
 # Invoice <% number %>
 
 Date: <% text.head 10 (time.to_string date) %>
@@ -120,7 +120,7 @@ Thank you for being a loyal customer!
 - **The library** is imported with `texl.import`, and its `data` is bound to
   the global name `money` with `bind`. Rendering waits for the import, so the
   later tags can call `money.format` and `money.sum`.
-- **The letterhead** is inserted with its `rendering`. It ends with a line
+- **The letterhead** is inserted with its `text`. It ends with a line
   break, which separates it from the title.
 - **The table rows** are produced by mapping `row` over the items and joining
   the results with line breaks. See

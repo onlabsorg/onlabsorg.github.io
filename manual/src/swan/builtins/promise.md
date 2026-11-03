@@ -23,8 +23,8 @@ promise.resolve p value -> Nothing
 ```
 
 Resolves the promise `p` with `value`, runs the functions waiting on `p`, and
-returns `Nothing`. If `p` is already resolved, nothing happens. An undefined
-`value` resolves `p` to `Nothing`. A tuple `value` is stored as a whole.
+returns `Nothing`. If `p` is already resolved, nothing happens. A tuple or an
+undefined `value` is stored as it is.
 
 If `p` is not a promise, the result is `Undefined`.
 

@@ -6,22 +6,36 @@ in one of the ways below.
 ## The output contains [[Undefined]]
 
 An operation in the tag was invalid. Find out which one by inspecting the
-value with [`undef.inspect`](../swan/builtins/undef.md#undefinspect). Show the
-members of the description, or a few of them:
+value with [`undef.inspect`](../swan/builtins/undef.md#undefinspect). Its
+`description` says what went wrong in plain words:
 
 ```texl
-<% e = undef.inspect ("Total" + 10) %><% e.type %>: <% e.op %> of <% e.lhv %> and <% e.rhv %>
+<% e = undef.inspect ("Total" + 10) %><% e.description %>
 ```
 
 ```text
-BinaryOperation: sum of Total and 10
+cannot add the text `"Total"` and the number `10`
 ```
 
 Here the sum of a text and a number is invalid. The fix is
 `"Total" + text.from 10`.
 
-`pos` tells where the error is, counted in bytes from the start of the tag's
-content (just after `<%`). Errors raised by built-in functions report 0.
+`pos` tells where the error is, counted in bytes from the start of the
+document, and `uri` tells which document it is in. An error made by a built-in
+function points to its call.
+
+A tag with a syntax error cannot inspect itself. A stray bracket or an unknown
+character makes the whole tag `[[Undefined]]`, and none of it runs, so the names
+it binds stay unbound. To read the error, give the code to `parse` in another
+tag:
+
+```texl
+<% e = undef.inspect (parse "(2 + 3)) * 4" {}) %><% e.description %>
+```
+
+```text
+unexpected `)`
+```
 
 The most common causes are:
 
@@ -29,7 +43,7 @@ The most common causes are:
 - a missing argument, which makes it `Nothing`: `add 3` instead of `add (3, 4)`;
 - calling the wrong value: `f g x` instead of `f (g x)` (see
   [pitfalls](../swan/pitfalls.md#application-is-left-associative));
-- a syntax error, such as a missing bracket or a single-quoted text.
+- a syntax error, such as a missing or extra bracket, or a single-quoted text.
 
 ## A value is missing
 

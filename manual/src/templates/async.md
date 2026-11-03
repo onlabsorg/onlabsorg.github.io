@@ -66,12 +66,24 @@ To wait for several promises, nest the callbacks, so that the tag returns a
 single promise:
 
 ```texl,nocheck
-<% texl.import("a.texl") ~> (a -> (texl.import("b.texl") ~> (b -> a.rendering + b.rendering))) %>
+<% texl.import("a.texl") ~> (a -> (texl.import("b.texl") ~> (b -> a.text + b.text))) %>
 ```
 
 Or import them in separate tags, one after the other.
 
 ## Promises never fail
 
-A promise always resolves. When the work behind it fails, for example when a
-document cannot be loaded, the promise resolves to `Nothing`. Use `;` to show a fallback.
+A promise always resolves. When the work behind it cannot be done, for example
+when a document cannot be loaded, the promise resolves to `Nothing`. Use `;` to
+show a fallback.
+
+An error made along the way is kept. A function after `~>` that fails gives a
+promise of an [`Undefined`](../swan/undefined.md) value, and the tag shows it:
+
+```texl
+<% 1 ~> (x -> x - "a") %>
+```
+
+```text
+[[Undefined]]
+```
