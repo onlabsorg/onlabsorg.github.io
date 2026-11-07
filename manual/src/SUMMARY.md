@@ -9,6 +9,7 @@
     - [Lines and cells](editor/lines.md)
     - [Writing text](editor/writing.md)
     - [Formulas](editor/formulas.md)
+    - [Errors](editor/errors.md)
     - [Cell types](editor/cell-types.md)
     - [Comments](editor/comments.md)
     - [Linking documents](editor/linking.md)

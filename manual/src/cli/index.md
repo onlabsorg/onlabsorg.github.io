@@ -24,7 +24,8 @@ stilo serve --help
 ## Exit status
 
 `stilo` exits with status 0 when the command succeeds, 1 when it fails
-(for example, a file that cannot be read), and 2 when the command line is
+(for example, a file that cannot be read, or an undefined value with
+[`stilo render --strict`](render.md#errors)), and 2 when the command line is
 wrong (an unknown command or option). Errors are printed to standard error,
 starting with `stilo:`.
 
@@ -33,5 +34,5 @@ stilo render missing.texl
 ```
 
 ```text
-stilo: missing.texl: could not be loaded
+stilo: missing.texl: could not be loaded: FileNotFoundError: [Errno 2] No such file or directory: '/home/ada/missing.texl'
 ```

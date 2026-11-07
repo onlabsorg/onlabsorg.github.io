@@ -74,10 +74,11 @@ Or import them in separate tags, one after the other.
 ## Promises never fail
 
 A promise always resolves. When the work behind it cannot be done, for example
-when a document cannot be loaded, the promise resolves to `Nothing`. Use `;` to
-show a fallback.
+when a document cannot be loaded, the promise resolves to an
+[`Undefined`](../swan/undefined.md) value. Use `|` to show a fallback, as
+[`;` only replaces `Nothing`](documents.md#missing-documents).
 
-An error made along the way is kept. A function after `~>` that fails gives a
+An error made along the way is kept too. A function after `~>` that fails gives a
 promise of an [`Undefined`](../swan/undefined.md) value, and the tag shows it:
 
 ```texl

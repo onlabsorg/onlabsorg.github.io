@@ -22,7 +22,7 @@ Ctrl+C in the terminal to stop the server.
 
 | Argument      | Default          | Meaning                                         |
 |---------------|------------------|-------------------------------------------------|
-| `folder`      | the current folder | The folder of the documents. It is the root of the server: everything under it can be read, and its `.texl` files can be written. |
+| `folder`      | the current folder | The folder of the documents. It is the root of the server: everything under it can be read, its `.texl` files can be written, and its documents and folders can be created, moved and deleted. |
 | `--host HOST` | `127.0.0.1`      | The address to listen on. The default accepts connections from your own computer only. |
 | `--port PORT` | `8000`           | The port to listen on.                          |
 | `--web WEB`   | the one installed with Stilo | The built web editor. Change it only to serve another build of it. |
@@ -36,7 +36,7 @@ above, `~/reports/projects/beam.texl` is at:
 http://127.0.0.1:8000/projects/beam.texl
 ```
 
-- In a browser, the address opens the document in the editor.
+- In a browser, the address of a document opens it in the editor.
 - For a Texl import, the same address gives the file itself. This is how
   one document imports another: `texl.import("../library/steel.texl")`
   in `projects/beam.texl` reads `library/steel.texl` from the server.
@@ -51,9 +51,14 @@ http://127.0.0.1:8000/projects/beam.texl?root=projects
 ## What is served
 
 - Only `.texl` files are listed in the navigation pane, and only they can be
-  created and saved. Other files in the folder (images, data) can be read,
-  for example by an import.
-- Hidden files and folders (names starting with `.`) are never served.
+  created and saved. Other files in the folder (images, PDFs, data) can be read,
+  by an import, a link or an image in a document.
+- Every other file has its own address, and comes as itself, with its real
+  type. A file of an unknown type downloads. HTML, XML and SVG files opened by
+  their address cannot run scripts, so a file in the folder cannot change your
+  documents.
+- Hidden files and folders (names starting with `.`) are never served. This
+  includes `.trash`, where deleted documents go.
 - Names starting with `_` are reserved at the top of the folder (the server
   uses `/_api` and `/_app`): files and folders with such names there are
   not served.
@@ -65,7 +70,7 @@ its protocol in the [Stilo repository](https://github.com/onlabsorg/stilo).
 ## Serving to other computers
 
 The server has no accounts and no passwords: anybody who can reach it can
-read and change every document in the folder. `--host 0.0.0.0` makes it
+read, change, move and delete every document in the folder. `--host 0.0.0.0` makes it
 reachable from your network; do that only on a network you trust, or put
 the server behind your own access control (a VPN, or a proxy that asks for
 a password).

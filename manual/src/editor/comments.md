@@ -12,6 +12,9 @@ Click the number in the right margin, or select the line and press
 that line. **Alt+C**, or the comments button in the top bar, shows or hides
 the pane.
 
+Each comment in the pane says which line it is on, as *Cell 3*. Click a comment
+to select its line in the document.
+
 ## Write a comment
 
 1. Select a line and press **Enter** to edit it.

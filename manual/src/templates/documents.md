@@ -144,16 +144,38 @@ neighbors with simple relative paths.
 
 ## Missing documents
 
-If a document cannot be loaded, the promise resolves to `Nothing`. Give a
-fallback with `;`:
+If a document cannot be loaded, the promise resolves to an
+[`Undefined`](../swan/undefined.md) value, so a broken import shows instead of
+silently rendering nothing:
 
 ```texl
-<% texl.import("missing.texl") ~> (doc -> doc.text ; "(not found)") %>
+Thank you for your order.
+<% texl.import("missing.texl") ~> (doc -> doc.text) %>
+```
+
+```text
+Thank you for your order.
+[[Undefined]]
+```
+
+Give a fallback with `|`. The fallback `;` does not work here, because it only
+replaces `Nothing`:
+
+```texl
+<% texl.import("missing.texl") ~> (doc -> doc.text | "(not found)") %>
 ```
 
 ```text
 (not found)
 ```
+
+[`undef.inspect`](../swan/builtins/undef.md#undefinspect) tells why. For a
+failed load, `op` is `"document.load"`, `lhv` is the full location of the
+document and `rhv` is the reason, and `description` says it in plain words,
+such as ``cannot load `https://example.com/a.texl`: HTTP status 404``.
+
+A failed load is not remembered, so a later import of the same document tries
+again.
 
 ## Import cycles
 

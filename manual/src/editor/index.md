@@ -9,20 +9,20 @@ read with Stilo open beside it, so you can try each step:
 1. Serve the sample documents, as in [Getting started](../getting-started.md):
 
     ```sh
-    stilo serve ../examples
+    stilo serve examples
     ```
 
 2. Open <http://127.0.0.1:8000/projects/beam/beam-check.texl>, or press
    **Alt+N** to create a practice document of your own.
 
-On a Mac, use **⌘** where this manual says **Ctrl**, except for
-**Ctrl+Space**, and **⌥** (Option) for **Alt**.
+On a Mac, use **⌘** where this manual says **Ctrl**, and **⌥** (Option) for
+**Alt**.
 
 ## The window
 
 ```text
 ┌──────────────────────────────────────────────────────────────────┐
-│ ☰  Stilo          beam-check •         [Commands] [Comments]     │  top bar
+│ ☰  Stilo          beam-check •      [Errors] [Comments] [⋮]      │  top bar
 ├────────────┬────────────────────────────────────────┬────────────┤
 │ /          │ 1 │ Beam check                         │ Commands   │
 │ ▾ library  │ 2 │ Input                              │  File      │
@@ -37,10 +37,10 @@ On a Mac, use **⌘** where this manual says **Ctrl**, except for
 
 | Part            | What it shows                                              |
 |-----------------|------------------------------------------------------------|
-| Top bar         | The name of the open document, with a dot (•) while it has unsaved changes, and a message after saving. The buttons on the right open the commands and the comments. |
+| Top bar         | The name of the open document, with a dot (•) while it has unsaved changes, and a message after saving. The buttons on the right open the errors, with their number, the comments and the commands (⋮). |
 | Navigation pane | The documents of the folder. Click a document to open it. Double-click a folder to show only that folder; the arrow at the top goes back up. Ctrl+B shows or hides the pane. |
-| The sheet       | The open document, as numbered lines on paper. Each line is a cell. The left margin shows the line number and the cell's type; the right margin shows how many comments a cell has. |
-| Right pane      | Either the **commands**, with their shortcuts (F1), or the **comments** of a line (Alt+C). |
+| The sheet       | The open document, as numbered lines on paper. Each line is a cell. The left margin shows the line number and the cell's type; the right margin shows how many comments and errors a cell has. |
+| Right pane      | The **commands**, with their shortcuts (F1), the **comments** of a line (Alt+C), or the **errors** of the document. |
 
 ## Your first steps
 
@@ -54,8 +54,10 @@ The next pages go further:
 - [Lines and cells](lines.md): edit, insert, move and delete lines.
 - [Writing text](writing.md): headings, lists, tables and links.
 - [Formulas](formulas.md): values that compute themselves.
-- [Cell types](cell-types.md): how a line is edited and shown.
+- [Errors](errors.md): what a wrong formula shows, and how to find the cause.
+- [Cell types](cell-types.md): text, Markdown, formulas and tables.
 - [Comments](comments.md): notes on a line.
-- [Linking documents](linking.md): use the values of another document.
-- [Files and folders](files.md): save, create, and find documents.
+- [Linking documents](linking.md): use the values of another document, and
+  link to documents, images and other files.
+- [Files and folders](files.md): save, create, rename, move and delete.
 - [Keyboard shortcuts](keys.md): all of them, on one page.

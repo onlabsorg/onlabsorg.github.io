@@ -38,6 +38,9 @@ put it back.
 - With several lines selected, the commands work on all of them.
 - Pasted lines replace the selected ones, as in a spreadsheet. Copied lines
   keep their type, and their comments.
+- A move or a paste that would make a formula
+  [run into another line](formulas.md#a-formula-stays-on-its-line) does
+  nothing, and a message says why.
 - Ctrl+Z undoes changes to the lines: edits, inserts, deletes, moves,
   pastes and type changes. While you edit a line, Ctrl+Z undoes your typing
   in it.

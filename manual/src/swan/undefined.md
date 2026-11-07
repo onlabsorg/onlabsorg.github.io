@@ -20,7 +20,10 @@ In a template, an undefined value renders as `[[Undefined]]`.
 - Syntax errors: `(1 + 2`, `1 + * 2`, `2 + 3 ) 1`.
 - Binding something that is not a name: `1 = 2`.
 - Binding a name inside a namespace: `math.(pi = 3)`.
-- `undef.from`, which creates one on purpose.
+- `undef.from`, which wraps any value in an undefined value.
+- [`texl.import`](builtins/texl.md#texlimport) of a document that cannot be
+  loaded.
+- A function provided by the program that runs Texl (the *host*), when it fails.
 
 An unbound name is *not* undefined: it is `Nothing`.
 
@@ -68,13 +71,15 @@ err.rhv              # => 1
 | `type`            | Cause                                   | Other members                  |
 |-------------------|-----------------------------------------|--------------------------------|
 | `UnaryOperation`  | a prefix operator or a built-in function | `op`, `val`, `pos`            |
-| `BinaryOperation` | a binary operator or an application     | `op`, `lhv`, `rhv`, `pos`      |
+| `BinaryOperation` | a binary operator, an application or a failed load | `op`, `lhv`, `rhv`, `pos` |
 | `Termination`     | the expression ended before its bracket was closed | `expected`, `pos`   |
 | `Token`           | a character or token in the wrong place | `token`, `pos`                 |
 | `Name`            | a name was expected                     | `pos`                          |
 | `Value`           | created with `undef.from`               | `val`                          |
+| `HostError`       | a function of the host failed           | `error`, `pos`                 |
 
-`op` names the operation, such as `"sum"`, `"application"` or `"text.size"`.
+`op` names the operation, such as `"sum"`, `"application"`, `"text.size"` or
+`"document.load"`. `error` is the text of the host's error.
 `pos` is the position of the error, counted in bytes from the start of the
 document, and `uri` is the document it is in. An error inside a function
 imported from another document points into that document. An error made by a

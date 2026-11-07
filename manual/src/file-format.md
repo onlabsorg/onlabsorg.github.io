@@ -17,10 +17,13 @@ Midspan moment: <% q * L ^ 2 / 8 %> kNm
 ## Cells
 
 Each cell starts with a **marker line**, `<!--{ name : type }-->`, on a line
-of its own. The cell's content is everything up to the next marker line.
+of its own. The cell's content is everything up to the next marker line. A
+marker line inside a `<% %>` formula, for example in a text, is not a marker: it
+is part of the formula.
 
-- The **type** says how the editor edits and shows the cell: `markdown` or
-  `text`. A type that the editor does not know is edited as `text`, and
+- The **type** says how the editor edits and shows the cell: `markdown`,
+  `text`, `formula` (a line that is one formula) or `table` (a line that is one
+  Markdown table). A type that the editor does not know is edited as `text`, and
   kept when the file is saved.
 - The **name** identifies the cell: four lowercase letters and digits, such
   as `bek4`. The editor gives one to every new cell, and to every marker
@@ -60,5 +63,10 @@ comments: they are text of the cell, like any other.
 - Keep cell names unique (compared without case). If two cells share a
   name, the editor leaves them as they are and reports the clash to the
   program that embeds it.
-- A formula must open and close in the same cell. A tag that starts in one
-  cell and ends in a later one hides the output of the cells in between.
+- A formula must open and close in the same cell. A `<%` that only closes at a
+  `%>` in a later cell makes the editor open the cells from the `<%` to the `%>`
+  as one cell, and the file does not change. Close the formula, and they become
+  separate cells again, with their types. A `<%` with no `%>` below it is plain
+  text.
+- A marker line that you type or paste into a cell in the editor makes a new
+  cell when you leave the cell.

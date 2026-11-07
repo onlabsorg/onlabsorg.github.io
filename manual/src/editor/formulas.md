@@ -18,7 +18,7 @@ the line to see the formulas themselves; **Escape** leaves it unchanged.
 
 1. Select a line and press **Alt+Enter**: an empty line appears below.
 2. Press **Enter** to edit it, and type `Area: `.
-3. Press **Ctrl+Space**: the editor inserts the brackets of a formula,
+3. Press **Ctrl+E**: the editor inserts the brackets of a formula,
    `<%  %>`, with the cursor between them.
 4. Type `3 * 4`, and press **Ctrl+Enter**. The line shows *Area: 12*.
 
@@ -94,10 +94,29 @@ The section is IPE 300, utilization 85 %: **adequate**.
 The comparisons are `<`, `<=`, `>`, `>=`, `==` (equal) and `!=` (not
 equal).
 
+## A formula stays on its line
+
+A formula must close on the line where it opens. If you leave a line with a
+`<%` that would only close at a `%>` on a line below, the editor keeps you on
+the line and says why:
+
+```text
+The “<%” on line 2 has no closing “%>”, so it would run into line 4: correct it, or press Escape to discard the changes.
+```
+
+The same goes for a `%>` you add below a `<%` left open higher up. A `<%` with
+no `%>` anywhere below it is not a formula: it stays plain text.
+
+## A line that is only a formula
+
+A line that holds one formula and nothing else can be a **Formula cell**:
+select the line and press **=**, as in a spreadsheet, and type the expression
+without the brackets. See [Cell types](cell-types.md#formula-cells).
+
 ## When a formula is wrong
 
-A formula that cannot be computed shows **`[[Undefined]]`**, and the rest of
-the document still works:
+A formula that cannot be computed shows **`[[Undefined]]`**, highlighted, and
+the rest of the document still works:
 
 ```texl
 Result: <% "a" - 1 %>
@@ -108,7 +127,8 @@ Result: [[Undefined]]
 ```
 
 Here, the formula subtracts a number from a word. Edit the line and fix the
-formula.
+formula. Point at the highlighted value to read the reason, or see
+[Errors](errors.md).
 
 ## Learn more
 

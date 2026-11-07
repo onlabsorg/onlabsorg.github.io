@@ -30,7 +30,9 @@ Each item of `tags` describes one tag, also a tag that writes nothing:
 | `out_end`   | where its output ends in `text`                            |
 | `value`     | the value that the tag wrote                               |
 
-If the document cannot be loaded, the promise resolves to `Nothing`. If the
+If the document cannot be loaded, the promise resolves to an `Undefined` value
+with the operation `"document.load"`, which says why (see
+[Missing documents](../../templates/documents.md#missing-documents)). If the
 import would close a cycle (a document importing itself, directly or through
 other documents), `texl.import` returns `Undefined` instead of a promise.
 
@@ -38,7 +40,7 @@ A relative `uri` is resolved against the URI of the importing document, and
 the fragment (`#...`) is ignored. The document renders in its own scope: it
 does not see the names of the importer. Within one rendering, each document is
 loaded and rendered at most once: importing it again, even through a different
-relative path, returns the same promise.
+relative path, returns the same promise. A load that failed is tried again.
 
 `texl.import` exists only in documents. In a context created by a host
 program to keep names across renders, `texl` has no `import`.

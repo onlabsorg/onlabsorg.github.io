@@ -46,13 +46,22 @@ shows:
 
 The columns are separated by `|`. The second row, with dashes, divides the
 header from the rows; a colon on the right aligns a column to the right.
-The columns do not need to line up in what you write.
+The columns do not need to line up in what you write. Every table spans the
+full width of the text, with columns of equal width; long text wraps inside its
+column.
+
+A [Table cell](cell-types.md#table-cells) lets you edit a table as a grid
+instead of writing these characters.
 
 ## Links
 
 A link is written as `[text](address)`. A link to another document of the
 folder, as `[steel](../../library/steel.texl)`, opens it in the editor. A
 short address like this one starts from the folder of the open document.
+
+An image is written the same way, with `!` in front:
+`![Cross section](drawings/ipe300.svg)`. Links and images can point to any file
+of the folder: see [Links to read](linking.md#links-to-read).
 
 ## Special characters
 
