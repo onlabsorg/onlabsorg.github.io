@@ -197,6 +197,28 @@ nspace.enum point    # => ("x", "y")
 nspace.size point    # => 2
 ```
 
+### Namespaces as text
+
+A namespace written into a template shows as `[[Namespace of N]]`. A member
+named `__text__` changes that: it is a function, and the text it returns, when
+applied to the namespace, is the namespace's text:
+
+```swan
+kN = v -> {value: v, unit: "kN", __text__: q -> text.from q.value + " " + q.unit}
+text.from (kN 120)       # => "120 kN"
+(kN 120).value * 1.35    # => 162
+nspace.size (kN 120)     # => 3, __text__ is a member like the others
+```
+
+The function receives the namespace as its argument, so one function serves
+every namespace made by `kN`. It must return a text: anything else makes the
+conversion `Undefined`. A template [shows the namespace](../templates/tags.md#namespaces-with-their-own-text)
+the same way.
+
+Names that start and end with two underscores, such as `__text__`, are
+reserved for members with a special meaning like this one. Do not use them
+for anything else.
+
 ### Namespaces as modules
 
 Namespaces group related functions, like the built-in `math` and `text`

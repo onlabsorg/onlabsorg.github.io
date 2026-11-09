@@ -10,6 +10,7 @@ fit it. The number in the left margin is the line number; people talk about
 1. Select a line and press **Enter** (or double-click it, or press **F2**).
 2. Change a word.
 3. Press **Ctrl+Enter** to keep your change, or **Escape** to throw it away.
+   A click on another line keeps it too, as in Excel.
 
 While you edit, **Enter** starts a new line of text inside the same cell.
 
@@ -44,6 +45,27 @@ put it back.
 - Ctrl+Z undoes changes to the lines: edits, inserts, deletes, moves,
   pastes and type changes. While you edit a line, Ctrl+Z undoes your typing
   in it.
+
+## Hide lines
+
+Lines can be hidden, as rows in Excel: a line with intermediate steps, or one
+that the reader does not need. A hidden line stays in the document and still
+computes; it is only out of sight.
+
+1. Select the lines to hide.
+2. Open the commands pane (**F1**) and choose **Hide the selected cells**.
+
+The line numbers skip the hidden lines, and a double rule shows where they
+are. The arrow keys pass over them.
+
+| Command                              | What it does                         |
+|--------------------------------------|--------------------------------------|
+| Hide the selected cells              | Hides the selected lines             |
+| Unhide the cells in the selection    | Shows again the hidden lines between the selected ones: select the lines above and below the double rule |
+| Show or hide the hidden cells        | Shows all hidden lines, greyed out, or hides them again. This is a view setting; it is not saved |
+
+The commands have no keys yet. Going to a hidden line from the
+[Errors](errors.md) or [Comments](comments.md) pane shows the hidden lines.
 
 ## Line numbers move
 

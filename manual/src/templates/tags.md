@@ -32,7 +32,7 @@ Each tag is replaced by its value, converted to text:
 | `Nothing`               | nothing at all                                |
 | a tuple                 | its items, separated by `, `                  |
 | a list                  | `[[List of N]]`                               |
-| a namespace             | `[[Namespace of N]]`                          |
+| a namespace             | `[[Namespace of N]]`, or [its own text](#namespaces-with-their-own-text) |
 | a function              | `[[Func]]`                                    |
 | an undefined value      | `[[Undefined]]`                               |
 | a promise               | its value, once it resolves                   |
@@ -50,6 +50,31 @@ text | 3.5 | TRUE | [] | 1, 2, 3
 The bracketed forms tell you that a value has no text form. To show the items
 of a list, turn it into a tuple with `list.enum`, or join them with
 `text.join` (see [Conditions and repetition](logic.md)).
+
+### Namespaces with their own text
+
+A namespace can say how it is written: give it a member `__text__`, a function
+that receives the namespace and returns a text.
+
+```texl
+<% force = {value: 120, unit: "kN", __text__: f -> text.from f.value + " " + f.unit} %>
+Horizontal load: <% Fx: force %>
+Factored: <% 1.35 * Fx.value %> kN
+```
+
+```text
+
+Horizontal load: 120 kN
+Factored: 162 kN
+```
+
+The tag `<% Fx: force %>` shows the force as text and also names it, so the
+next line can still compute with `Fx.value`. This is how a
+[data table](../editor/cell-types.md#data-table-cells) in Stilo shows as a
+table and still gives its columns to other lines.
+
+`__text__` must return a text. If it returns anything else, such as a number,
+the tag shows `[[Undefined]]`.
 
 ### Numbers
 

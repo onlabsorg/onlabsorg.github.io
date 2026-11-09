@@ -17,12 +17,17 @@ Converts `value` to text, the way a template renders it:
 | a number     | the number, such as `42` or `1.5` |
 | a boolean    | `TRUE` or `FALSE`            |
 | a list       | `[[List of N]]`              |
-| a namespace  | `[[Namespace of N]]`         |
+| a namespace  | `[[Namespace of N]]`, or the text its `__text__` member returns |
 | a function   | `[[Func]]`                   |
 | undefined    | `[[Undefined]]`              |
 
 A promise gives `Undefined`. Use `text.from` to build text out of numbers,
 since `+` does not mix types.
+
+A namespace with a `__text__` member, a function, gives the text that the
+function returns when it is applied to the namespace (see
+[Namespaces as text](../collections.md#namespaces-as-text)). If it does not
+return a text, `text.from` returns `Undefined`.
 
 ```swan
 text.from 42         # => "42"

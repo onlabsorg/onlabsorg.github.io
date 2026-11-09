@@ -52,12 +52,15 @@ On a Mac, use **⌘** where this manual says **Ctrl**, and **⌥** (Option) for
 The next pages go further:
 
 - [Lines and cells](lines.md): edit, insert, move and delete lines.
-- [Writing text](writing.md): headings, lists, tables and links.
+- [Writing text](writing.md): rich text, Markdown and equations.
 - [Formulas](formulas.md): values that compute themselves.
 - [Errors](errors.md): what a wrong formula shows, and how to find the cause.
-- [Cell types](cell-types.md): text, Markdown, formulas and tables.
+- [Cell types](cell-types.md): rich text, Markdown, text, formulas, tables
+  and data tables.
 - [Comments](comments.md): notes on a line.
 - [Linking documents](linking.md): use the values of another document, and
   link to documents, images and other files.
+- [Projects and libraries](projects.md): a folder of documents that belong
+  together, with the libraries they use.
 - [Files and folders](files.md): save, create, rename, move and delete.
 - [Keyboard shortcuts](keys.md): all of them, on one page.

@@ -21,7 +21,7 @@ stilo --help
 ```
 
 ```text
-usage: stilo [-h] {render,serve} ...
+usage: stilo [-h] {init,render,serve} ...
 
 Edit and render a folder of linked Texl documents.
 ```
@@ -45,16 +45,18 @@ Stilo: serving /home/ada/stilo/examples at http://127.0.0.1:8000/
 ```
 
 Open <http://127.0.0.1:8000/projects/beam/beam-check.texl> in your browser.
-You see a beam calculation: text, inputs, a design load and a table, all on
-numbered lines. The navigation pane on the left lists the documents of the
-folder.
+You see a beam calculation: text, inputs, a design load with its equations,
+a table of load combinations and a bending check, all on numbered lines.
+The navigation pane on the left lists the documents of the folder.
 
 Try it:
 
-1. Press ↓ until line 2, *Input*, is selected, and press Enter to edit it.
+1. Press ↓ until line 3, *Input*, is selected, and press Enter to edit it.
+   (Line 1 is [hidden](editor/lines.md#hide-lines): it imports the Stilo
+   library.)
 2. Change the span, `L = 6`, to `L = 7`.
-3. Press Ctrl+Enter (⌘+Enter on a Mac). The design load and the bending
-   check below follow.
+3. Press Ctrl+Enter (⌘+Enter on a Mac). The design load, the load
+   combinations and the bending check below follow.
 4. Press Ctrl+S to save the document.
 
 Press Ctrl+C in the terminal to stop the server.
@@ -69,7 +71,9 @@ stilo render examples/projects/beam/beam-check.texl
 
 The output is the document's text, with every `<% %>` formula replaced by
 its value. The beam check imports the section properties from
-`examples/library/steel.texl`, and `stilo render` follows that import too.
+`examples/library/steel.texl`, and the Stilo library from its
+[project](editor/projects.md), `examples/projects/beam`; `stilo render`
+follows those imports too.
 
 ## Next steps
 

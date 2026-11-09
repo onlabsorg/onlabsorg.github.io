@@ -21,10 +21,12 @@ of its own. The cell's content is everything up to the next marker line. A
 marker line inside a `<% %>` formula, for example in a text, is not a marker: it
 is part of the formula.
 
-- The **type** says how the editor edits and shows the cell: `markdown`,
-  `text`, `formula` (a line that is one formula) or `table` (a line that is one
-  Markdown table). A type that the editor does not know is edited as `text`, and
-  kept when the file is saved.
+- The **type** says how the editor edits and shows the cell: `rich` (rich
+  text), `markdown`, `text`, `formula` (a line that is one formula), `table` (a
+  line that is one Markdown table) or `data` (a data table). A type that the
+  editor does not know is edited as `text`, and kept when the file is saved.
+- `| hidden` after the type, as in `<!--{ imp1 : formula | hidden }-->`, marks
+  a [hidden line](editor/lines.md#hide-lines).
 - The **name** identifies the cell: four lowercase letters and digits, such
   as `bek4`. The editor gives one to every new cell, and to every marker
   written without a name, such as `<!--{ markdown }-->`. Names are unique
@@ -38,6 +40,40 @@ where Markdown and HTML do not show them.
 
 Older documents may use markers of the form `<!--% type %-->`. The editor
 reads them, and writes them in the new form, with a name, when it saves.
+
+## What each type stores
+
+Every type stores plain Texl text, so the document renders in any Texl tool:
+
+- `rich` and `markdown` store the same Markdown, which is why a line changes
+  between the two without a change to its text. Equations stay as LaTeX
+  between `$` signs.
+- `formula` stores one `<% %>` tag.
+- `table` stores a Markdown table, with formulas in its fields.
+- `data` stores one formula that builds the table with the Stilo library, one
+  row per line. The name, the column names and the values are those of the
+  editor:
+
+```texl
+<!--{ lod3 : data }-->
+<% loads: stilo.dataframe {
+    columns: ["Case", "Fx (kN)", "Fy (kN)"],
+    rows: [
+        ["ULS-1", 1.35 * Fx_k, 35],
+        ["ULS-2", 1.5 * Fx_k, ""]
+    ]
+} %>
+```
+
+The line above it in the document, hidden, imports the library:
+
+```texl
+<!--{ imp1 : formula | hidden }-->
+<% texl.import "~/lib/stilo/index.texl" ~> (lib -> bind "stilo" lib.data.stilo) %>
+```
+
+`~` stands for the folder of the [project](editor/projects.md). Other Texl
+programs do not know this meaning of `~`: `stilo render` does.
 
 ## Formulas and names
 

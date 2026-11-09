@@ -18,7 +18,7 @@ IPE = {
 %>
 ```
 
-`examples/projects/beam/beam-check.texl` imports it, on its first line, and
+`examples/projects/beam/beam-check.texl` imports it, under its title, and
 uses its values below:
 
 ```texl
@@ -45,6 +45,10 @@ uses its values below:
   the members of `lib.data`. `bind "steel" lib.data` gives them, together,
   the name `steel` in this document: `steel.grade.name` is `"S355"`.
 - The import must be on a line above the lines that use it.
+
+- In a [project](projects.md), `~` stands for the project folder:
+  `~/lib/steel/sections.texl` reads the same document from any folder of the
+  project.
 
 **Copy link**, in the [navigation pane](files.md#managing-documents-and-folders),
 gives you the short address of a document, relative to the open one.

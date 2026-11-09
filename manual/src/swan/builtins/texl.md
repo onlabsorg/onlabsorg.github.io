@@ -42,6 +42,12 @@ does not see the names of the importer. Within one rendering, each document is
 loaded and rendered at most once: importing it again, even through a different
 relative path, returns the same promise. A load that failed is tried again.
 
+If the server answers with a redirect to another address, the document is the
+one at that final address: it is its `uri`, and its own relative imports start
+from there. Imports through different addresses that lead to the same
+document share it, and a document that imports itself through another address
+is a cycle like any other.
+
 `texl.import` exists only in documents. In a context created by a host
 program to keep names across renders, `texl` has no `import`.
 

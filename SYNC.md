@@ -6,5 +6,5 @@ after these, updates the manual, and then updates this table.
 
 | Repository | Commit    | Date       | Note                                     |
 |------------|-----------|------------|------------------------------------------|
-| texl       | `a485ac2` | 2026-11-04 | Texl 0.6.0: a failed `texl.import` gives an `Undefined` that says why; `HostError`; new `undef.from` description |
-| stilo      | `c26ce97` | 2026-11-07 | Stilo 0.2.0: Formula and Table cells, type keys, errors in the editor and `stilo render`, file and folder commands, links to other files, formulas stay in one cell |
+| texl       | `1d4b5e5` | 2026-11-09 | Texl 0.8.0: namespaces give their own text with `__text__`; an import that redirects is the document at its final address |
+| stilo      | `ac6f609` | 2026-11-09 | Stilo 0.3.0: rich text cells (default), equations, data table cells, hidden cells, projects with `stilo init` and `~` in imports |

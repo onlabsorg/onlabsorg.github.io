@@ -49,7 +49,9 @@ stilo render beam.texl -o beam.md
 
 ## Imports
 
-Relative imports resolve from the document's own folder, as in the editor.
+Relative imports resolve from the document's own folder, as in the editor,
+and `~` stands for the folder of the document's
+[project](../editor/projects.md) (your home folder outside a project).
 If `projects/beam.texl` contains:
 
 ```texl

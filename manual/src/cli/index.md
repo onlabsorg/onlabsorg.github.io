@@ -1,9 +1,10 @@
 # The stilo command
 
-`stilo` is Stilo's command line. It has two subcommands:
+`stilo` is Stilo's command line. It has three subcommands:
 
 | Command                       | What it does                                   |
 |-------------------------------|------------------------------------------------|
+| [`stilo init`](init.md)       | Makes a folder a project, with the Stilo library |
 | [`stilo serve`](serve.md)     | Serves a folder of documents with the web editor |
 | [`stilo render`](render.md)   | Renders a document to the terminal or a file   |
 

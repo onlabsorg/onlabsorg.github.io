@@ -18,9 +18,15 @@ the line to see the formulas themselves; **Escape** leaves it unchanged.
 
 1. Select a line and press **Alt+Enter**: an empty line appears below.
 2. Press **Enter** to edit it, and type `Area: `.
-3. Press **Ctrl+E**: the editor inserts the brackets of a formula,
-   `<%  %>`, with the cursor between them.
-4. Type `3 * 4`, and press **Ctrl+Enter**. The line shows *Area: 12*.
+3. Press **Ctrl+E**: a small field opens for the formula.
+4. Type `3 * 4` and press **Enter**. The formula shows as a grey box, a
+   *chip*, in the text.
+5. Press **Ctrl+Enter**. The line shows *Area: 12*.
+
+In a [rich text](writing.md#rich-text) line, as here, each formula is a
+chip: point at it to see the formula, click it to change it. In a Markdown,
+Text or Table line, **Ctrl+E** writes the brackets of a formula, `<%  %>`,
+with the cursor between them, around the selected text if there is any.
 
 ## Names
 
