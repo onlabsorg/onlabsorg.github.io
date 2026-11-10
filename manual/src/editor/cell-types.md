@@ -11,6 +11,7 @@ icon in the left margin, before the line number, shows it.
 | Formula    | **=**       | The result of one formula. You edit the expression alone. |
 | Table      | **Shift+T** | A table, edited as a grid.                        |
 | Data table | **d**       | A table of values that other lines compute with, edited as a grid. |
+| Chart      | **c**       | A line chart, for example of two columns of a data table, edited as a form. |
 
 Formulas between `<%` and `%>` work in Rich text, Markdown, Text and Table
 lines.
@@ -51,6 +52,7 @@ them. A type's key leaves the line as it is, and shows the reason under it:
 | Formula    | a line that is one formula            | *Needs a single formula*  |
 | Table      | a line that is one Markdown table     | *Needs a table*           |
 | Data table | a line that is one data table         | *Needs a data table*      |
+| Chart      | a line that is one chart              | *Needs a chart*           |
 
 A rich text line cannot hold HTML tags, such as `<sub>`, or a table. Keep
 such a line as Markdown, or put the table in a Table line.
@@ -192,24 +194,72 @@ The largest horizontal load is 150 kN.
 shows as `[[Undefined]]` in its own field; the rest of the table still shows.
 Such a value is not listed in the [Errors pane](errors.md).
 
-### The Stilo library
-
-A data table needs the **Stilo library**, a document of functions that
-comes with Stilo. When you write your first data table in a document, the
-editor adds a line at the top that imports the library, and
-[hides](lines.md#hide-lines) it. Leave that line where it is.
-
-The library is found in the [project](projects.md) the document belongs to.
-In a folder that is not a project, data tables show `[[Undefined]]` until you
-make it one with [`stilo init`](../cli/init.md).
-
 A field cannot contain `"` in a column name, or `%>` anywhere. Fields cannot
 refer to each other, as `B2` does in a spreadsheet: compute a value on a line
 above, give it a name, and use the name in the field.
 
+## Chart cells
+
+A Chart draws a line through points, such as the bending moment along a beam
+or the values of two columns of a data table. Press **c** on an empty line:
+the line becomes a chart, edited as a **form**, one field per row, with its
+description on the left:
+
+| Field         | What you write                                           |
+|---------------|----------------------------------------------------------|
+| Chart type    | The kind of chart, from a list. Only **Line** for now.   |
+| X values      | A formula that gives a list of numbers, such as `loads.column "x (m)"` |
+| Y values      | A formula that gives a list of as many numbers, such as `loads.column "M (kNm)"` |
+| X axis label  | Plain text, without quotes. Optional.                    |
+| Y axis label  | Plain text, without quotes. Optional.                    |
+| Title         | Plain text, without quotes. Optional.                    |
+
+**Tab** and **Shift+Tab**, or **↑** and **↓**, move between the fields;
+**Ctrl+Enter** keeps the chart and **Escape** discards the changes, as in
+every line. A formula field that is not valid is outlined in red as you type,
+and X and Y values are required.
+
+Outside editing, the line shows the chart across the width of the page, in
+the colors of the light or dark theme. The axes run between round numbers
+just below and above the values. A point whose X or Y value is not a number,
+as an empty field of a data table, is left out.
+
+With the [data table](#data-table-cells) `sections`, of IPE sections with
+columns `h (mm)` and `Mass (kg/m)`, this chart shows the mass against the
+height:
+
+| Field         | Value                         |
+|---------------|-------------------------------|
+| X values      | `sections.column "h (mm)"`    |
+| Y values      | `sections.column "Mass (kg/m)"` |
+| X axis label  | h (mm)                        |
+| Y axis label  | Mass (kg/m)                   |
+| Title         | IPE sections                  |
+
+The X and Y values can be any list, not only a column. The beam example
+(`examples/projects/beam/analysis.texl`) draws its bending-moment diagram
+from lists that it computes.
+
+If the chart cannot be drawn, for example because X and Y have a different
+number of values, the line shows `[[Undefined]]` and the
+[Errors pane](errors.md) says why.
+
+## The Stilo library
+
+Data tables and charts need the **Stilo library**, a document of functions
+that comes with Stilo. When you write the first data table or chart of a
+document, the editor adds a line at the top that imports the library, and
+[hides](lines.md#hide-lines) it. Leave that line where it is.
+
+The library is found in the [project](projects.md) the document belongs to.
+In a folder that is not a project, data tables and charts show
+`[[Undefined]]` until you make it one with [`stilo init`](../cli/init.md).
+A project made with Stilo 0.3 has a library without charts: see
+[Update the Stilo library](projects.md#update-the-stilo-library).
+
 ## Lines edited by hand
 
-A Formula, Table or Data table line whose text no longer has that shape,
+A Formula, Table, Data table or Chart line whose text no longer has that shape,
 because the file was edited in another program, is edited as Text. You can
 leave it unchanged, or correct it until it has the shape.
 

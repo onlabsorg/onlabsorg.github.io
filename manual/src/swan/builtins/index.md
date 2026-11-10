@@ -7,7 +7,7 @@ Every Swan program starts with these names already bound:
 | [Root names](root.md)        | `TRUE`, `FALSE`, `type`, `parse`, `bind`, `label` |
 | [`bool`](bool.md)            | Converting and combining truth values             |
 | [`numb`](numb.md)            | Converting values to numbers                      |
-| [`text`](text.md)            | Measuring, searching, slicing, splitting text     |
+| [`text`](text.md)            | Measuring, searching, slicing, splitting, filling in text |
 | [`list`](list.md)            | Measuring, searching and slicing lists            |
 | [`nspace`](nspace.md)        | Inspecting namespaces                             |
 | [`math`](math.md)            | Mathematical constants and functions              |

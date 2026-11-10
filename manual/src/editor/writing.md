@@ -111,8 +111,22 @@ shows:
 The columns are separated by `|`. The second row, with dashes, divides the
 header from the rows; a colon on the right aligns a column to the right.
 The columns do not need to line up in what you write. Every table spans the
-full width of the text, with columns of equal width; long text wraps inside its
-column.
+full width of the text; each column takes the width its content needs, and
+long text wraps inside its column.
+
+To give a table a caption, write it between `<caption>` and `</caption>` on
+the line right after the table, in a Markdown line:
+
+```markdown
+| Section | Height (mm) | Mass (kg/m) |
+|---------|------------:|------------:|
+| IPE 200 |         200 |        22.4 |
+| IPE 300 |         300 |        42.2 |
+<caption>Table 1: IPE sections.</caption>
+```
+
+The caption shows below the table, aligned to the left. Stilo does not
+number tables: write the number yourself.
 
 A [Table cell](cell-types.md#table-cells) lets you edit a table as a grid
 instead of writing these characters.

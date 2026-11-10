@@ -103,6 +103,28 @@ row = o -> "| " + o.id + " | " + text.from o.total + " |"
 | B-7 | 140 |
 ```
 
+[`text.template`](../swan/builtins/text.md#texttemplate) writes the same row
+more simply. You write the row as text, with the names of the members
+between braces, and it fills them in, numbers included:
+
+```texl
+<%
+nl = "
+",
+orders = [{id: "A-1", total: 25}, {id: "B-7", total: 140}],
+row = text.template "| {id} | {total} |"
+%>| Order | Total |
+|-------|-------|
+<% text.join nl (list.enum orders => row) %>
+```
+
+```text
+| Order | Total |
+|-------|-------|
+| A-1 | 25 |
+| B-7 | 140 |
+```
+
 ### Empty lists
 
 `list.enum []` is `Nothing`, so an empty list writes nothing. To write a

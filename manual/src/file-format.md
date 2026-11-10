@@ -23,7 +23,7 @@ is part of the formula.
 
 - The **type** says how the editor edits and shows the cell: `rich` (rich
   text), `markdown`, `text`, `formula` (a line that is one formula), `table` (a
-  line that is one Markdown table) or `data` (a data table). A type that the
+  line that is one Markdown table), `data` (a data table) or `chart`. A type that the
   editor does not know is edited as `text`, and kept when the file is saved.
 - `| hidden` after the type, as in `<!--{ imp1 : formula | hidden }-->`, marks
   a [hidden line](editor/lines.md#hide-lines).
@@ -65,7 +65,22 @@ Every type stores plain Texl text, so the document renders in any Texl tool:
 } %>
 ```
 
-The line above it in the document, hidden, imports the library:
+- `chart` stores one formula that draws the chart with the Stilo library, one
+  field per line. The X and Y values are formulas, the labels and the title
+  texts:
+
+```texl
+<!--{ ch01 : chart }-->
+<% stilo.charts.line {
+    x: sections.column "h (mm)",
+    y: sections.column "Mass (kg/m)",
+    x_label: "h (mm)",
+    y_label: "Mass (kg/m)",
+    title: "IPE sections"
+} %>
+```
+
+A line above them in the document, hidden, imports the library:
 
 ```texl
 <!--{ imp1 : formula | hidden }-->

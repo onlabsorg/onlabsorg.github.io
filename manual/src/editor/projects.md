@@ -41,7 +41,8 @@ library from any document of the project, however deep in its folders:
 ```
 
 The editor adds this line, hidden, when you write the first
-[data table](cell-types.md#data-table-cells) of a document.
+[data table](cell-types.md#data-table-cells) or
+[chart](cell-types.md#chart-cells) of a document.
 
 Your own libraries work the same way. Put a library of steel sections in
 `lib/steel/sections.texl`, and every document of the project imports it as
@@ -60,7 +61,23 @@ add a library to a project, copy its folder into `lib/`.
 
 | Library        | What it gives                                       |
 |----------------|-----------------------------------------------------|
-| `lib/stilo/`   | The functions that Stilo's lines use, such as the [data table](cell-types.md#data-table-cells). `stilo init` copies it. |
+| `lib/stilo/`   | The functions that Stilo's lines use: the [data table](cell-types.md#data-table-cells) and the [chart](cell-types.md#chart-cells). `stilo init` copies it. |
+
+### Update the Stilo library
+
+A project keeps the copy of the Stilo library that `stilo init` made, also
+when you update Stilo: its documents keep working as they were. A project
+made with Stilo 0.3 has no charts, for example. To give a project the
+library of your current Stilo, make a new project in an empty folder and
+copy its library over the old one:
+
+```sh
+stilo init /tmp/fresh
+rm -r beam/lib/stilo
+cp -r /tmp/fresh/lib/stilo beam/lib/stilo
+```
+
+On Windows, use your file manager for the last two steps.
 
 A library that has its own `project.texl` is a project of its own: its `~`
 is its own folder, not yours.

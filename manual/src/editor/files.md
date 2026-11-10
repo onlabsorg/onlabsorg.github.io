@@ -23,6 +23,9 @@ the browser asks you to confirm.
 
 - Click a document to open it. Documents are listed without the `.texl`
   extension.
+- Other files, such as images, PDFs and spreadsheets, are listed too, greyed
+  out, with their full name. Click one to open it in a new browser tab; a
+  file that the browser cannot show downloads.
 - Click a folder to fold or unfold it. Double-click it to show only that
   folder; the arrow at the top of the pane goes back up.
 - Right-click a document, a folder or the empty area of the tree for a menu of
@@ -42,21 +45,32 @@ does not have it. Stilo does not overwrite an existing document.
 
 **New folder…** creates a folder the same way.
 
+## Upload files
+
+**Upload files…**, in the menu of a folder or of the pane, adds files from
+your computer to the folder: drawings, photos, data. Pick one or several in
+the dialog that opens. A file whose name is already taken in the folder is
+not uploaded; the top bar says which ones.
+
+A document can then show or link to the file: see
+[Links to read](linking.md#links-to-read).
+
 ## Managing documents and folders
 
 These commands are in the menus of the navigation pane, and in the commands
-pane, where they act on the item you last used in the tree.
+pane, where they act on the item you last used in the tree. They work on
+other files as on documents, except Duplicate.
 
 | Command            | What it does                                          |
 |--------------------|-------------------------------------------------------|
-| **Rename** (F2)    | Changes the name of a document or folder, in its row of the tree. |
-| **Move to…**       | Moves a document or folder to a folder you choose.    |
+| **Rename** (F2)    | Changes the name of a document, file or folder, in its row of the tree. A rename cannot add or remove the `.texl` extension: a document stays a document. |
+| **Move to…**       | Moves a document, file or folder to a folder you choose. |
 | **Duplicate**      | Copies a document next to it, under a name you give, and opens the copy. Documents only. |
-| **Copy link**      | Copies a document's link, relative to the open document, ready for `texl.import` or a Markdown link. |
-| **Delete** (Delete) | Moves a document, or the documents of a folder, to the trash. |
+| **Copy link**      | Copies the link of a document or file, relative to the open document, ready for `texl.import`, a Markdown link or an image. |
+| **Delete** (Delete) | Moves a document, a file or a folder with everything in it to the trash. |
 | **Open as root**   | Shows only this folder in the pane, as a double click does. |
 | **Refresh**        | Reads the tree again.                                 |
-| **Show empty folders** | Shows or hides folders with no documents. It is on by default, and the browser remembers it. |
+| **Show other files** | Shows or hides the files that are not documents, and the folders that hold only such files. It is on by default, and the browser remembers it. |
 
 **F2** and **Delete** work on the tree only while an item of the tree has the
 focus; elsewhere they act on the lines of the sheet.
@@ -69,14 +83,15 @@ The document stays open at its new address, with a fresh undo history.
 
 ### Delete and the trash
 
-Delete asks first. Nothing is erased: a document goes to a hidden `.trash`
-folder at the top of the served folder, inside a folder named after the time
-of the deletion. To get it back, move it out with your file manager, as Stilo
-has no command for it. A deleted open document closes.
+Delete asks first. Nothing is erased: a document or file goes to a hidden
+`.trash` folder at the top of the served folder, inside a folder named after
+the time of the deletion. To get it back, move it out with your file manager,
+as Stilo has no command for it. A deleted open document closes.
 
 The folder of a deleted document stays, even if empty. Deleting a folder moves
-all its documents to the trash, and removes the folder unless other files
-remain in it.
+everything in it, documents and other files, to the trash, and the folder is
+gone. The question before it says how many documents and other files go with
+it.
 
 ## Commands
 

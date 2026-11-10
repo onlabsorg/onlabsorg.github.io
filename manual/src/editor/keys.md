@@ -25,8 +25,8 @@ When an item of the tree has the focus:
 
 | Keys       | Command                                   |
 |------------|-------------------------------------------|
-| F2         | Rename the document or folder             |
-| Delete     | Delete the document or folder             |
+| F2         | Rename the document, file or folder       |
+| Delete     | Delete the document, file or folder       |
 
 ## Lines
 
@@ -51,6 +51,7 @@ When no line is being edited:
 | M                            | Make the line Markdown and edit it      |
 | Shift+T                      | Make the line a Table and edit it       |
 | D                            | Make the line a Data table and edit it  |
+| C                            | Make the line a Chart and edit it       |
 | Shift+F2                     | Show the comments of the selected line  |
 
 Pasted lines replace the selected ones, as in a spreadsheet.
@@ -96,6 +97,14 @@ applies, **Shift+Enter** starts a new line, **Escape** cancels.
 | ↑ / ↓           | Go to the field above or below               |
 | Ctrl+Enter      | Keep the changes and leave the line          |
 | Escape          | Discard the changes and leave the line       |
+
+## While editing a chart
+
+| Keys                  | Command                                      |
+|-----------------------|----------------------------------------------|
+| Tab, Shift+Tab, ↑ / ↓ | Go to the next or previous field             |
+| Ctrl+Enter            | Keep the changes and leave the line          |
+| Escape                | Discard the changes and leave the line       |
 
 ## In the type menu
 

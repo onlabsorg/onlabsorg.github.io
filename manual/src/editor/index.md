@@ -38,7 +38,7 @@ On a Mac, use **⌘** where this manual says **Ctrl**, and **⌥** (Option) for
 | Part            | What it shows                                              |
 |-----------------|------------------------------------------------------------|
 | Top bar         | The name of the open document, with a dot (•) while it has unsaved changes, and a message after saving. The buttons on the right open the errors, with their number, the comments and the commands (⋮). |
-| Navigation pane | The documents of the folder. Click a document to open it. Double-click a folder to show only that folder; the arrow at the top goes back up. Ctrl+B shows or hides the pane. |
+| Navigation pane | The documents and other files of the folder. Click a document to open it. Double-click a folder to show only that folder; the arrow at the top goes back up. Ctrl+B shows or hides the pane. |
 | The sheet       | The open document, as numbered lines on paper. Each line is a cell. The left margin shows the line number and the cell's type; the right margin shows how many comments and errors a cell has. |
 | Right pane      | The **commands**, with their shortcuts (F1), the **comments** of a line (Alt+C), or the **errors** of the document. |
 
@@ -55,12 +55,13 @@ The next pages go further:
 - [Writing text](writing.md): rich text, Markdown and equations.
 - [Formulas](formulas.md): values that compute themselves.
 - [Errors](errors.md): what a wrong formula shows, and how to find the cause.
-- [Cell types](cell-types.md): rich text, Markdown, text, formulas, tables
-  and data tables.
+- [Cell types](cell-types.md): rich text, Markdown, text, formulas, tables,
+  data tables and charts.
 - [Comments](comments.md): notes on a line.
 - [Linking documents](linking.md): use the values of another document, and
   link to documents, images and other files.
 - [Projects and libraries](projects.md): a folder of documents that belong
   together, with the libraries they use.
-- [Files and folders](files.md): save, create, rename, move and delete.
+- [Files and folders](files.md): save, create, upload, rename, move and
+  delete.
 - [Keyboard shortcuts](keys.md): all of them, on one page.

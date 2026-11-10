@@ -1,6 +1,6 @@
 # text
 
-Measuring, searching, slicing, splitting and joining [text](../collections.md#text).
+Measuring, searching, slicing, splitting, joining and filling in [text](../collections.md#text).
 Positions and lengths count Unicode characters, not bytes, and start at 0.
 
 ## `text.from`
@@ -232,4 +232,38 @@ Swan text has no escapes:
 ```text
 first
 second
+```
+
+## `text.template`
+
+```text
+text.template template -> Func
+```
+
+Returns a function that fills in `template`: applied to a namespace, it
+returns the text of `template` with every `{name}` replaced by the member
+`name` of the namespace.
+
+```swan
+line = text.template "{item}: {qty} pcs at {price} EUR"
+line {item: "Bolt M16", qty: 40, price: 0.85}   # => "Bolt M16: 40 pcs at 0.85 EUR"
+```
+
+- Each value is written as a tag writes it, without `text.from`: numbers as
+  `0.85`, `TRUE`, a tuple with its items separated by commas, a namespace by
+  its `__text__` member.
+- A name that the namespace does not have gives an empty text, not an error.
+- `{{` and `}}` give a literal brace. Any other brace, as in `{ a }`,
+  `{a.b}` or `{}`, stays as it is written: a placeholder is a name, not a
+  calculation.
+- Applied to a tuple of namespaces, the function returns a tuple of texts,
+  one for each.
+- Applied to anything other than a namespace, it returns `Undefined`.
+
+```swan
+greet = text.template "Dear {name},"
+greet {name: "Anna"}                     # => "Dear Anna,"
+greet {}                                 # => "Dear ,", no name, empty text
+greet ({name: "Anna"}, {name: "Marco"})  # => ("Dear Anna,", "Dear Marco,")
+text.template "{{name}}" {name: "Anna"}  # => "{name}"
 ```

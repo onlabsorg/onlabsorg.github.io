@@ -34,6 +34,10 @@ Midspan moment: **56.25 kNm**
 The cell markers, `<!--{ ... }-->`, stay in the output. They are HTML
 comments, so they do not show when the output is read as Markdown or HTML.
 
+A [chart](../editor/cell-types.md#chart-cells) is written as an SVG image,
+`<svg ...>` followed by its lines, which shows as the chart when the output is
+read as Markdown or HTML. Equations stay as their LaTeX text.
+
 ## Arguments and options
 
 | Argument            | Meaning                                              |

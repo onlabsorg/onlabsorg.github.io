@@ -20,6 +20,7 @@
     - [stilo init](cli/init.md)
     - [stilo serve](cli/serve.md)
     - [stilo render](cli/render.md)
+    - [stilo tutor](cli/tutor.md)
 - [The document format](file-format.md)
 
 # Writing documents with Texl

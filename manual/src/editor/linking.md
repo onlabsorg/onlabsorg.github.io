@@ -5,7 +5,7 @@ loads from a colleague's calculation, the rates of a price list. When the
 other document changes, yours follows.
 
 The sample documents show how. `examples/library/steel.texl` is a library of
-steel sections:
+steel sections (shortened here):
 
 ```texl
 # Steel sections
@@ -18,8 +18,8 @@ IPE = {
 %>
 ```
 
-`examples/projects/beam/beam-check.texl` imports it, under its title, and
-uses its values below:
+`examples/projects/beam/basis-of-design.texl` imports it, under its title,
+and uses its values below:
 
 ```texl
 <% texl.import("../../library/steel.texl") ~> (lib -> bind "steel" lib.data) %>
@@ -34,6 +34,11 @@ uses its values below:
 
 - Section: IPE 300, steel S355
 ```
+
+Documents can link in a chain. The design report of the same project,
+`beam-check.texl`, imports the basis of design and the calculation note, and
+takes its figures from them: change the span in the basis of design, and the
+report follows.
 
 ## How it works
 
@@ -60,8 +65,8 @@ document.
 
 The imported document is read again every time the editor computes yours:
 after every change you make. Open the library, change the mass of the
-IPE 300, save, and open the beam check again: the self-weight and the
-check use the new value.
+IPE 300, save, and open the design report again: the self-weight and the
+checks use the new value.
 
 An address can also be a full web address, `https://...`, of a document on
 another server that allows it.
