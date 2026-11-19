@@ -133,11 +133,13 @@ math.min numbers -> Numb
 
 Return the largest and the smallest item of the tuple `numbers`. They reduce
 the whole tuple to one value. Every item must be a number, and the tuple must
-not be empty; otherwise the result is `Undefined`.
+not be empty; otherwise the result is `Undefined`. If an item is `NaN`, not a
+number, so is the result.
 
 ```swan
 math.max (1, 5, 2)   # => 5
 math.min (1, 5, 2)   # => 1
 math.max (list.enum [3, 9])    # => 9
 math.max ()          # => Undefined
+math.max (1, 0 / 0)  # => NaN
 ```

@@ -99,22 +99,22 @@ the tags instead.
 
 ## Syntax errors
 
-Swan never rejects a program. A syntax error, such as a missing closing bracket
-or a misplaced operator, produces an `Undefined` value in the place where the
-error is, and the rest of the expression is evaluated as usual.
+Swan never rejects a program with an error message of its own. A syntax
+error anywhere in an expression, such as a missing closing bracket, a
+misplaced operator, a stray `)` or an unknown character such as `@`, makes
+the whole expression `Undefined`, and none of it runs, not even its
+assignments.
 
 ```swan
-(1 + 2               # => Undefined
-1 + * 2              # => Undefined
-```
-
-A token that cannot belong to the expression is different: a stray `)`, `]` or
-`}`, or an unknown character such as `@`. It makes the whole expression
-`Undefined`, and none of it runs, not even its assignments.
-
-```swan
-2 + 1e3 ) 1          # => Undefined
+(1 + 2               # => Undefined, missing closing `)`
+1 + * 2              # => Undefined, unexpected `*`
+2 + 1e3 ) 1          # => Undefined, unexpected `)`
 (1 @ 2)              # => Undefined
+x = 5, x + (2 +      # => Undefined, and x is not bound
 ```
+
+This holds inside brackets too, and in a part that would never be evaluated,
+as in `TRUE | (1 +`. In a template each tag is read on its own, so a syntax
+error spoils only its own tag.
 
 See [Undefined values](undefined.md) to find out what went wrong.

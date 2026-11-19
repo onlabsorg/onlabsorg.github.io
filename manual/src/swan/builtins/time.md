@@ -40,11 +40,13 @@ time.from_date date -> Numb
 Returns the timestamp of the date described by the namespace `date`, which can
 have the members `year`, `month`, `day`, `hour`, `minute` and `second`.
 Missing members default to year 0, month 1, day 1 and 00:00:00, so always give
-at least the year.
+at least the year. A member beyond its range rolls over: month 13 is January
+of the next year, and day 32 of January is February 1.
 
 ```swan
 time.from_date {year: 2026, month: 1, day: 1}      # => 1767225600
 time.from_date {year: 1970}                         # => 0
+time.from_date {year: 2026, month: 1, day: 32}     # => 1769904000, 2026-02-01
 ```
 
 ## `time.to_string`
@@ -71,12 +73,14 @@ Reads an ISO 8601 date and returns its timestamp. `string` is a date
 `YYYY-MM-DD`, optionally followed by `T` (or a space) and a time `HH:MM` or
 `HH:MM:SS`, with an optional fraction of a second and an optional final `Z`. A
 missing time is midnight. Time zone offsets are not supported: the time is
-always UTC. A text in another format gives `Undefined`.
+always UTC. A text in another format, or with a field out of range, such as
+month 13 or hour 25, gives `Undefined`.
 
 ```swan
 time.from_string "2026-05-28"            # => 1779926400
 time.from_string "2026-05-28T20:26:40Z"  # => 1780000000
 time.from_string "28/05/2026"            # => Undefined
+time.from_string "2026-13-01"            # => Undefined
 ```
 
 ## `time.week_day`

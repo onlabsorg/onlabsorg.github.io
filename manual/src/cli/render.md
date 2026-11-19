@@ -42,7 +42,7 @@ read as Markdown or HTML. Equations stay as their LaTeX text.
 
 | Argument            | Meaning                                              |
 |---------------------|------------------------------------------------------|
-| `file`              | The document to render.                              |
+| `file`              | The document to render. A folder or a [packed package](../editor/packages.md#packed-packages) (`.texlz`) renders its `index.texl`. |
 | `-o`, `--output OUTPUT` | Writes the rendering to this file instead of the terminal. An existing file is replaced. |
 | `-d`, `--debug`     | Numbers the undefined values in the output, and explains each one on standard error. |
 | `--strict`          | Exits with status 1 if the document returned an undefined value. The output is still written. |
@@ -55,7 +55,7 @@ stilo render beam.texl -o beam.md
 
 Relative imports resolve from the document's own folder, as in the editor,
 and `~` stands for the folder of the document's
-[project](../editor/projects.md) (your home folder outside a project).
+[package](../editor/packages.md) (your home folder outside a package).
 If `projects/beam.texl` contains:
 
 ```texl
@@ -63,7 +63,9 @@ If `projects/beam.texl` contains:
 ```
 
 then `stilo render projects/beam.texl` reads `library/steel.texl`, wherever
-you run the command from.
+you run the command from. Imports into
+[packed packages](../editor/packages.md#packed-packages) work as in the
+editor.
 
 ## Errors
 

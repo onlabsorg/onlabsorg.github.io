@@ -106,6 +106,17 @@ fact 10              # => 3628800
 The recursion stops because the right side of `?` and `;` is evaluated only
 when it is needed. See [Evaluation order](conditions.md#evaluation-order).
 
+A function can call itself a few hundred times: about 300 times in the web
+editor, about 600 in `stilo render`. Deeper than that, or in a recursion
+that never stops, the result is `Undefined`, described as "recursion too
+deep".
+
+```swan
+count = n -> n == 0 ? 0 ; 1 + count (n - 1)
+count 100            # => 100
+count 1000           # => Undefined, recursion too deep
+```
+
 ## Currying
 
 A function with several parameters can also be written as a function that

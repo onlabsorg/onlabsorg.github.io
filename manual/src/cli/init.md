@@ -1,24 +1,24 @@
 # stilo init
 
-`stilo init` makes a folder a [project](../editor/projects.md): a folder of
-documents that belong together, with the libraries they use.
+`stilo init` makes a folder a [package](../editor/packages.md): a folder of
+documents that belong together, with the references they use.
 
 ```sh
 stilo init beam
 ```
 
 ```text
-Stilo: /home/ada/beam is a project: project.texl, lib/
+Stilo: /home/ada/beam is a package: package.texl, references/
 ```
 
 It creates the folder if it does not exist, and then:
 
-- writes `project.texl`, which marks the folder as a project;
-- copies the Stilo library into `lib/stilo/`, for the
-  [data tables](../editor/cell-types.md#data-table-cells) of the project's
-  documents.
+- writes `package.texl`, which marks the folder as a package;
+- puts the Stilo library into `references/`, as `stilo.texlz`, for the
+  [data tables](../editor/cell-types.md#data-table-cells) and
+  [charts](../editor/cell-types.md#chart-cells) of the package's documents.
 
-Without a folder, it makes the current folder a project:
+Without a folder, it makes the current folder a package:
 
 ```sh
 cd beam
@@ -29,34 +29,42 @@ stilo init
 
 | Option        | What it does                                          |
 |---------------|-------------------------------------------------------|
-| `folder`      | The folder of the project, created if missing. Default: the current folder. |
-| `--name NAME` | The name of the project, written in `project.texl`. Default: the folder's name. |
+| `folder`      | The folder of the package, created if missing. Default: the current folder. |
+| `--name NAME` | The name of the package, written in `package.texl`. Default: the folder's name. |
 
-## `project.texl`
+## `package.texl`
 
-`project.texl` is an ordinary document, which you can open in the editor and
+`package.texl` is an ordinary document, which you can open in the editor and
 add notes to:
 
 ```texl
 # beam
 
-This folder is a Stilo project. This file marks its home folder: in an
-import, `~` stands for it, as in `~/lib/stilo/index.texl`. The values below
-configure the project.
+This folder is a Stilo package. This file marks its home folder: in an
+import, `~` stands for it, as in `~/references/stilo.texlz/index.texl`. The values below
+configure the package.
 
-<% project_name = "beam" %>
-<% stilo_version = "0.3.0" %>
+<% package_name = "beam" %>
+<% stilo_version = "0.7.0" %>
 ```
 
-`stilo_version` is the version of Stilo that made the project.
+`stilo_version` is the version of Stilo that made the package.
 
 ## Running it again
 
-`stilo init` does not overwrite a project. In a folder that already has a
-`project.texl`, it stops with status 1:
+`stilo init` does not overwrite anything. In a folder that is already a
+package, it leaves `package.texl` alone and only adds the Stilo library if
+`references/stilo.texlz` is missing:
 
 ```text
-stilo: beam: already a project (project.texl exists)
+Stilo: /home/ada/beam is already a package: added references/stilo.texlz
 ```
 
-It never overwrites an existing `lib/stilo/` either.
+If the library is there, there is nothing to do:
+
+```text
+Stilo: /home/ada/beam is already a package, with references/stilo.texlz: nothing to do
+```
+
+This is how you [update the Stilo library](../editor/packages.md#update-the-stilo-library)
+of a package.

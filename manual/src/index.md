@@ -32,7 +32,7 @@ In Stilo, this file is two lines of a sheet:
 2   Midspan moment: 56.25 kNm
 ```
 
-A document can also import other documents, so a project can use the data
+A document can also import other documents, so a package can use the data
 that a library of materials or a colleague's calculation provides.
 
 ## How to read this manual

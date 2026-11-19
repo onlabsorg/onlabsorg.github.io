@@ -13,11 +13,11 @@ stilo tutor
 
 ```text
 Stilo: a new copy of the tutorial is in /home/ada/.local/share/stilo/tutorial
-Stilo: the tutorial is at http://127.0.0.1:8000/index.texl (press Ctrl+C here to stop)
+Stilo: the tutorial is at http://127.0.0.1:8010/index.texl (press Ctrl+C here to stop)
 ```
 
 The tutorial has twelve lessons, 30 to 45 minutes in all, from your first
-edit to a project of your own, and two advanced lessons after them. Each
+edit to a package of your own, and two advanced lessons after them. Each
 lesson is a document: you read it and do its exercises in the editor. Many
 exercises check themselves and show *✓ Done*, and the index shows how far
 you are.
@@ -29,7 +29,7 @@ left it.
 ## Your copy
 
 The first `stilo tutor` copies the tutorial into a folder of your own and
-makes it a [project](../editor/projects.md). You change your copy, never
+makes it a [package](../editor/packages.md). You change your copy, never
 the original, so you can try anything.
 
 The folder depends on your computer: `stilo tutor --help` shows it. On
@@ -57,5 +57,5 @@ was made by an older version and proposes `--reset`.
 |----------------|------------------|-------------------------------------------------|
 | `--dir DIR`    | your user data folder | The folder of your copy. It must be empty, missing, or a copy of the tutorial. |
 | `--reset`      |                  | Start again from a fresh copy; the old one is moved aside. |
-| `--port PORT`  | `8000`           | The port to serve the tutorial on, as in [`stilo serve`](serve.md). |
+| `--port PORT`  | `8010`           | The port to serve the tutorial on, as in [`stilo serve`](serve.md). |
 | `--no-browser` |                  | Do not open the browser; open the address that `stilo tutor` prints yourself. |

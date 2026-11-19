@@ -12,7 +12,7 @@ read with Stilo open beside it, so you can try each step:
     stilo serve examples
     ```
 
-2. Open <http://127.0.0.1:8000/projects/beam/beam-check.texl>, or press
+2. Open <http://127.0.0.1:8010/packages/beam/beam-check.texl>, or press
    **Alt+N** to create a practice document of your own.
 
 On a Mac, use **⌘** where this manual says **Ctrl**, and **⌥** (Option) for
@@ -27,7 +27,7 @@ On a Mac, use **⌘** where this manual says **Ctrl**, and **⌥** (Option) for
 │ /          │ 1 │ Beam check                         │ Commands   │
 │ ▾ library  │ 2 │ Input                              │  File      │
 │     steel  │   │ - Span: 6 m                        │   Save     │
-│ ▾ projects │ 3 │ Design load                    2   │   …        │
+│ ▾ packages │ 3 │ Design load                    2   │   …        │
 │   ▾ beam   │ 4 │                                    │            │
 │     beam-… │ 5 │                                    │            │
 │            │                                        │            │
@@ -60,8 +60,8 @@ The next pages go further:
 - [Comments](comments.md): notes on a line.
 - [Linking documents](linking.md): use the values of another document, and
   link to documents, images and other files.
-- [Projects and libraries](projects.md): a folder of documents that belong
-  together, with the libraries they use.
-- [Files and folders](files.md): save, create, upload, rename, move and
-  delete.
+- [Packages and references](packages.md): a folder of documents that belong
+  together, with the references they use, and packed packages.
+- [Files and folders](files.md): save, create, upload, rename, move,
+  download and delete.
 - [Keyboard shortcuts](keys.md): all of them, on one page.

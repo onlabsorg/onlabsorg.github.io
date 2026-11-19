@@ -12,7 +12,7 @@ stilo serve ~/reports
 ```
 
 ```text
-Stilo: serving /home/ada/reports at http://127.0.0.1:8000/ (press Ctrl+C here to stop)
+Stilo: serving /home/ada/reports at http://127.0.0.1:8010/ (press Ctrl+C here to stop)
 ```
 
 Open the address in your browser to see the folder in the editor. Press
@@ -25,7 +25,7 @@ Goodbye!*
 |---------------|------------------|-------------------------------------------------|
 | `folder`      | the current folder | The folder of the documents. It is the root of the server: everything under it can be read, its `.texl` files can be written, and its files and folders can be created, uploaded, moved and deleted. |
 | `--host HOST` | `127.0.0.1`      | The address to listen on. The default accepts connections from your own computer only. |
-| `--port PORT` | `8000`           | The port to listen on.                          |
+| `--port PORT` | `8010`           | The port to listen on. Choose another one if a program already uses it. |
 | `--web WEB`   | the one installed with Stilo | The built web editor. Change it only to serve another build of it. |
 
 ## Addresses
@@ -34,7 +34,7 @@ Every document has one address: its path in the folder. With the server
 above, `~/reports/projects/beam.texl` is at:
 
 ```text
-http://127.0.0.1:8000/projects/beam.texl
+http://127.0.0.1:8010/projects/beam.texl
 ```
 
 - In a browser, the address of a document opens it in the editor.
@@ -46,7 +46,7 @@ The editor's navigation pane shows the whole folder. Add `?root=` to an
 address to show only a part of it:
 
 ```text
-http://127.0.0.1:8000/projects/beam.texl?root=projects
+http://127.0.0.1:8010/projects/beam.texl?root=projects
 ```
 
 ## What is served
@@ -55,6 +55,14 @@ http://127.0.0.1:8000/projects/beam.texl?root=projects
   documents, which the editor opens and saves. Other files (images, PDFs,
   data) can be uploaded, renamed, moved and deleted, and read by an import, a
   link or an image in a document.
+- A [packed package](../editor/packages.md#packed-packages) (`.texlz`) is
+  shown as a folder that cannot be changed: its documents open read-only,
+  and imports reach into it. The file itself can be uploaded, renamed,
+  moved, deleted and downloaded.
+- Files and folders that Stilo has no permission to change on your computer
+  are read-only too: the navigation pane shows them with a lock.
+- For an import, the address of a folder or a packed package leads to its
+  `index.texl`. Add `?download` to the address of a file to download it.
 - Every other file has its own address, and comes as itself, with its real
   type. A file of an unknown type downloads. HTML, XML and SVG files opened by
   their address cannot run scripts, so a file in the folder cannot change your

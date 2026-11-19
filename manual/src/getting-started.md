@@ -21,7 +21,7 @@ stilo --help
 ```
 
 ```text
-usage: stilo [-h] {init,render,serve,tutor} ...
+usage: stilo [-h] {init,pack,render,serve,tutor} ...
 
 Edit and render a folder of linked Texl documents.
 ```
@@ -55,13 +55,13 @@ stilo serve examples
 ```
 
 ```text
-Stilo: serving /home/ada/stilo/examples at http://127.0.0.1:8000/
+Stilo: serving /home/ada/stilo/examples at http://127.0.0.1:8010/
 ```
 
-Open <http://127.0.0.1:8000/projects/beam/beam-check.texl> in your browser.
+Open <http://127.0.0.1:8010/packages/beam/beam-check.texl> in your browser.
 You see the design report of a steel floor beam, on numbered lines: text,
 tables of design data and results, conclusions and recommendations. The
-report takes its figures from two other documents of the same project, the
+report takes its figures from two other documents of the same package, the
 *basis of design* (span, loads, materials) and the *calculation note*
 (equations, checks, a bending-moment diagram). The navigation pane on the
 left lists the files of the folder.
@@ -86,14 +86,15 @@ Press Ctrl+C in the terminal to stop the server.
 `stilo render` prints a document with its formulas computed:
 
 ```sh
-stilo render examples/projects/beam/beam-check.texl
+stilo render examples/packages/beam/beam-check.texl
 ```
 
 The output is the document's text, with every `<% %>` formula replaced by
 its value. The report imports the basis of design and the calculation note,
-which import the steel sections of `examples/library/steel.texl` and the
-Stilo library of their [project](editor/projects.md),
-`examples/projects/beam`; `stilo render` follows those imports too.
+which import the steel sections and the Stilo library from the
+[references](editor/packages.md#references) of their package,
+`examples/packages/beam/references`; `stilo render` follows those imports
+too.
 
 ## Next steps
 

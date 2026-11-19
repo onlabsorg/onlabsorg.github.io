@@ -18,6 +18,7 @@ In a template, an undefined value renders as `[[Undefined]]`.
 - Built-in functions given the wrong arguments: `text.size 42`.
 - Math results that are not numbers: `math.sqrt (-1)`.
 - Syntax errors: `(1 + 2`, `1 + * 2`, `2 + 3 ) 1`.
+- A recursion that goes too deep, or never stops: "recursion too deep".
 - Binding something that is not a name: `1 = 2`.
 - Binding a name inside a namespace: `math.(pi = 3)`.
 - `undef.from`, which wraps any value in an undefined value.

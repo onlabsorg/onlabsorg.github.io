@@ -84,10 +84,10 @@ A line above them in the document, hidden, imports the library:
 
 ```texl
 <!--{ imp1 : formula | hidden }-->
-<% texl.import "~/lib/stilo/index.texl" ~> (lib -> bind "stilo" lib.data.stilo) %>
+<% texl.import "~/references/stilo.texlz/index.texl" ~> (lib -> bind "stilo" lib.data.stilo) %>
 ```
 
-`~` stands for the folder of the [project](editor/projects.md). Other Texl
+`~` stands for the folder of the [package](editor/packages.md). Other Texl
 programs do not know this meaning of `~`: `stilo render` does.
 
 ## Formulas and names

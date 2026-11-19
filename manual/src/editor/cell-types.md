@@ -237,7 +237,7 @@ height:
 | Title         | IPE sections                  |
 
 The X and Y values can be any list, not only a column. The beam example
-(`examples/projects/beam/analysis.texl`) draws its bending-moment diagram
+(`examples/packages/beam/analysis.texl`) draws its bending-moment diagram
 from lists that it computes.
 
 If the chart cannot be drawn, for example because X and Y have a different
@@ -251,11 +251,12 @@ that comes with Stilo. When you write the first data table or chart of a
 document, the editor adds a line at the top that imports the library, and
 [hides](lines.md#hide-lines) it. Leave that line where it is.
 
-The library is found in the [project](projects.md) the document belongs to.
-In a folder that is not a project, data tables and charts show
-`[[Undefined]]` until you make it one with [`stilo init`](../cli/init.md).
-A project made with Stilo 0.3 has a library without charts: see
-[Update the Stilo library](projects.md#update-the-stilo-library).
+The library is found in the [references](packages.md#references) of the
+package the document belongs to, as `references/stilo.texlz`. In a folder
+that is not a package, data tables and charts show `[[Undefined]]` until you
+make it one with [`stilo init`](../cli/init.md). A package made with an older
+Stilo may have an older library: see
+[Update the Stilo library](packages.md#update-the-stilo-library).
 
 ## Lines edited by hand
 

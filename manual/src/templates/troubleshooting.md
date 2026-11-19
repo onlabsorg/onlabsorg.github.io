@@ -92,18 +92,16 @@ separator, use `text.join`.
 A tag alone on its line leaves the line break behind. See
 [Line breaks around tags](tags.md#line-breaks-around-tags).
 
-## Rendering crashes with a stack overflow
+## "recursion too deep"
 
-A recursive function never reaches the case that stops it. Check that the
-condition that ends the recursion is reached for every input. See
-[Evaluation order](../swan/conditions.md#evaluation-order).
+A recursive function never reaches the case that stops it, or it calls
+itself more than a few hundred times. Check that the condition that ends the
+recursion is reached for every input. See
+[Evaluation order](../swan/conditions.md#evaluation-order) and
+[Recursion](../swan/functions.md#recursion).
 
 ## Part of the template is copied as it is
 
 A `<%` without a matching `%>` makes the rest of the template plain text. A
 `%>` inside a text literal ends the tag early. See
 [Writing the delimiters as text](tags.md#writing-the-delimiters-as-text).
-
-## Known issues
-
-- Infinite recursion stops the program instead of producing `Undefined`.

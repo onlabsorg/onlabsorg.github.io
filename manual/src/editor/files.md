@@ -16,8 +16,12 @@ program, saved it), Stilo does not overwrite it: the top bar says *Not
 saved: changed on the server, reload it*. Copy your changes, run **Reload
 document** from the commands pane, and apply them again.
 
-Before you open another document or close the page with unsaved changes,
-the browser asks you to confirm.
+Before you open another document with unsaved changes, Stilo asks whether to
+save them, in a dialog of its own. Before you close the page with unsaved
+changes, the browser asks.
+
+Stilo's dialogs say on their buttons what they do, as **Save**, **Discard**,
+**Delete** or **Rename**. **Enter** answers yes, **Escape** no.
 
 ## The navigation pane
 
@@ -28,6 +32,9 @@ the browser asks you to confirm.
   file that the browser cannot show downloads.
 - Click a folder to fold or unfold it. Double-click it to show only that
   folder; the arrow at the top of the pane goes back up.
+- A [packed package](packages.md#packed-packages) (`.texlz`) has its own
+  icon and a lock. Click it to unfold it as a folder; its documents open
+  read-only.
 - Right-click a document, a folder or the empty area of the tree for a menu of
   commands, or use the `⋯` button of a row or of the pane's header. The header
   also has buttons for New document and New folder.
@@ -66,11 +73,15 @@ other files as on documents, except Duplicate.
 | **Rename** (F2)    | Changes the name of a document, file or folder, in its row of the tree. A rename cannot add or remove the `.texl` extension: a document stays a document. |
 | **Move to…**       | Moves a document, file or folder to a folder you choose. |
 | **Duplicate**      | Copies a document next to it, under a name you give, and opens the copy. Documents only. |
+| **Download**       | Saves a document, file or packed package on your computer, through the browser. Folders cannot be downloaded. |
 | **Copy link**      | Copies the link of a document or file, relative to the open document, ready for `texl.import`, a Markdown link or an image. |
 | **Delete** (Delete) | Moves a document, a file or a folder with everything in it to the trash. |
 | **Open as root**   | Shows only this folder in the pane, as a double click does. |
 | **Refresh**        | Reads the tree again.                                 |
 | **Show other files** | Shows or hides the files that are not documents, and the folders that hold only such files. It is on by default, and the browser remembers it. |
+
+Commands that do not apply to an item, in the menus and in the commands pane,
+are greyed out, with the reason.
 
 **F2** and **Delete** work on the tree only while an item of the tree has the
 focus; elsewhere they act on the lines of the sheet.
@@ -80,6 +91,15 @@ focus; elsewhere they act on the lines of the sheet.
 
 If the item holds the open document, Stilo offers to save your changes first.
 The document stays open at its new address, with a fresh undo history.
+
+### Read-only documents and folders
+
+Some documents and folders cannot be changed: those inside a
+[packed package](packages.md#packed-packages), and those that Stilo has no
+permission to change on your computer. The navigation pane shows them with a
+lock. A read-only document opens with *Read-only* in the top bar, and the
+reason; you can read it, copy from it and import it, but not save, rename,
+move or delete it. Nothing can be added to a read-only folder.
 
 ### Delete and the trash
 
